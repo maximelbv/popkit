@@ -17,7 +17,7 @@ const Category = ({ key, category }: ICategoryProps) => {
 
   return (
     <Box key={key} className="flex flex-col">
-      {name && <span className="!text-[18px] !font-bold !py-2.5">{name}</span>}
+      {name && <span className="!text-[18px] !font-bold !py-4">{name}</span>}
       <Stack gap={2.5} pl={4} borderLeft={"1px solid #ffffff1c"}>
         {elements &&
           elements.map((elem: ICategory["elements"][number]): ReactNode => {
