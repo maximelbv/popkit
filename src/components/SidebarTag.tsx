@@ -5,7 +5,7 @@ interface ISidebarTagProps {
 const SidebarTag = ({ type }: ISidebarTagProps) => {
   return (
     <div>
-      <span>{type}</span>
+      <span className="!text-[14px]">{type}</span>
     </div>
   );
 };
