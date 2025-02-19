@@ -1,0 +1,39 @@
+{
+  "name": "Test Component",
+  "category": "Text Animation",
+  "props": [
+    {
+      "property": "text",
+      "type": "string",
+      "default": "\"Hello World\"",
+      "description": "The text to be displayed inside the component."
+    },
+    {
+      "property": "speed",
+      "type": "number",
+      "default": "1",
+      "description": "The animation speed multiplier."
+    }
+  ],
+  "dependencies": ["gsap"],
+  "code": {
+    "code": [
+      {
+        "format": "js",
+        "withTailwind": false,
+        "filePath": "/code-examples/TestComponent.js"
+      },
+      {
+        "format": "ts",
+        "withTailwind": true,
+        "filePath": "/code-examples/TestComponent.tailwind.tsx"
+      }
+    ],
+    "additional": [
+      {
+        "name": "Installation",
+        "filePath": "/code-examples/install-test-component.sh"
+      }
+    ]
+  }
+}
