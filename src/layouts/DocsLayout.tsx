@@ -6,7 +6,7 @@ const DocsLayout = () => {
   return (
     <>
       <Header />
-      <div>
+      <div className="max-w-layout-max-w !p-4 !m-auto">
         <Sidebar />
         <main>
           <Outlet />
