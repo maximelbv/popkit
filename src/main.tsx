@@ -5,6 +5,7 @@ import { Provider } from "@/components/ui/provider.tsx";
 import "./globals.css";
 import LandingPage from "@/pages/LandingPage";
 import DocsLayout from "@/layouts/DocsLayout";
+import ComponentDocumentationLayout from "./layouts/ComponentDocumentationLayout";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -13,10 +14,10 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/docs" element={<DocsLayout />}>
-            {/* <Route
+            <Route
               path="components/:componentName"
-              element={<ComponentDemo />}
-            /> */}
+              element={<ComponentDocumentationLayout />}
+            />
           </Route>
         </Routes>
       </BrowserRouter>

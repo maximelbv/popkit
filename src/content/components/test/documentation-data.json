@@ -1,6 +1,6 @@
 {
-  "name": "Test Component",
-  "category": "Text Animation",
+  "name": "Test Component 1",
+  "category": "Data",
   "props": [
     {
       "property": "text",
@@ -15,24 +15,24 @@
       "description": "The animation speed multiplier."
     }
   ],
-  "dependencies": ["gsap"],
+  "dependencies": ["test"],
   "code": {
     "code": [
       {
         "format": "js",
         "withTailwind": false,
-        "filePath": "/code-examples/TestComponent.js"
+        "filePath": "/code/TestComponent.js"
       },
       {
         "format": "ts",
         "withTailwind": true,
-        "filePath": "/code-examples/TestComponent.tailwind.tsx"
+        "filePath": "/code/TestComponent.tailwind.tsx"
       }
     ],
     "additional": [
       {
         "name": "Installation",
-        "filePath": "/code-examples/install-test-component.sh"
+        "filePath": "/code/install-test-component.sh"
       }
     ]
   }
