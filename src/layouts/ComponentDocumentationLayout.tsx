@@ -20,7 +20,6 @@ const ComponentDocumentationLayout = () => {
   const {
     name,
     preview: PreviewComponent,
-    code,
     props,
     dependencies,
   } = componentData;
