@@ -7,8 +7,10 @@ const Header = () => {
     <div className="flex items-center justify-between w-full max-w-layout-max-w !m-auto !p-4">
       <Logo />
       <div>
-        <IconButton aria-label="github" variant="outline">
-          <BsGithub />
+        <IconButton aria-label="github" variant="outline" asChild>
+          <a href="https://github.com/maximelbv/popkit" target="blank_">
+            <BsGithub />
+          </a>
         </IconButton>
       </div>
     </div>
