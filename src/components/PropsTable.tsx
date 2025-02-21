@@ -1,5 +1,5 @@
 import { IProp } from "@/types/components";
-import { Table } from "@chakra-ui/react";
+import { Code, Table } from "@chakra-ui/react";
 
 interface IPropsTableProps {
   props: IProp[];
@@ -8,7 +8,7 @@ interface IPropsTableProps {
 const PropsTable = ({ props }: IPropsTableProps) => {
   return (
     <div>
-      <Table.Root size="lg" variant={"outline"} width={"100%"}>
+      <Table.Root size="lg" variant={"outline"} rounded="l3">
         <Table.Header>
           <Table.Row>
             <Table.ColumnHeader className="!font-bold">
@@ -26,9 +26,21 @@ const PropsTable = ({ props }: IPropsTableProps) => {
         <Table.Body>
           {props.map((prop: IProp) => (
             <Table.Row key={prop.property} className="!text-md">
-              {prop.property && <Table.Cell>{prop.property}</Table.Cell>}
+              {prop.property && (
+                <Table.Cell>
+                  <Code size="md" variant="surface">
+                    {prop.property}
+                  </Code>
+                </Table.Cell>
+              )}
               {prop.type && <Table.Cell>{prop.type}</Table.Cell>}
-              {prop.default && <Table.Cell>{prop.default}</Table.Cell>}
+              {prop.default && (
+                <Table.Cell>
+                  <Code size="md" variant="surface">
+                    {prop.default}
+                  </Code>
+                </Table.Cell>
+              )}
               {prop.description && <Table.Cell>{prop.description}</Table.Cell>}
             </Table.Row>
           ))}

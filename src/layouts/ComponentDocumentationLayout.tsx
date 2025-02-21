@@ -14,7 +14,7 @@ const ComponentDocumentationLayout = () => {
   );
 
   if (!componentData) {
-    return <div>❌ Composant non trouvé.</div>;
+    return <div>❌ No component found.</div>;
   }
 
   const {
