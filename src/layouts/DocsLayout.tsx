@@ -8,9 +8,9 @@ const DocsLayout = () => {
   return (
     <>
       <Header />
-      <div className="flex max-w-layout-max-w !p-4 !m-auto">
-        <Sidebar />
-        <main>
+      <div className="flex gap-2 max-w-layout-max-w !p-4 !m-auto !mt-[30px]">
+        <Sidebar className="!w-[200px]" />
+        <main className="w-full">
           <Outlet key={location.pathname} />
         </main>
       </div>

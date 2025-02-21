@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { Dependency } from "./dependencies";
+import { ComponentType } from "react";
+import { IDependency } from "./dependencies";
 import { Category } from "./categories";
 
 export type CodeFormat = "js" | "ts";
@@ -23,15 +23,15 @@ export interface IComponentBlock {
 }
 
 export interface ICode {
-  code: IComponentBlock[];
+  component: IComponentBlock[];
   additional: ICodeBlock[];
 }
 
 export interface IComponent {
   name: string;
   category: Category;
-  preview?: ReactNode;
+  preview?: ComponentType;
   code?: ICode;
   props?: IProp[];
-  dependencies?: Dependency[];
+  dependencies?: IDependency[];
 }

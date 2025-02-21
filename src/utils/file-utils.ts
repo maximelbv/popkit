@@ -2,10 +2,10 @@ import { IComponent } from "@/types/components";
 
 export const importAllComponentsDocData = (): IComponent[] => {
   const modules = import.meta.glob(
-    "/src/content/components/**/documentation-data.json",
+    "/src/content/components/**/documentation-data.ts",
     {
       eager: true,
-      import: "default",
+      import: "documentationData",
     }
   );
   return Object.values(modules) as IComponent[];

@@ -8,7 +8,11 @@ import { Link } from "react-router";
 // import SidebarTag from "./SidebarTag";
 import { groupComponentsByCategory } from "@/utils/collection-utils";
 
-const Sidebar = () => {
+interface ISidebarProps {
+  className: string;
+}
+
+const Sidebar = ({ className }: ISidebarProps) => {
   const [categories, setCategories] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
@@ -17,7 +21,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className={`${className} flex flex-col gap-3`}>
       {Object.entries(categories).map(([category, elements]) => (
         <Category key={category} name={category} elements={elements} />
       ))}
