@@ -2,15 +2,15 @@ import { COMPONENTS_PATH, DOC_PATH } from "@/constants/paths";
 import { IComponent, Status } from "@/types/components";
 import { importAllComponentsDocData } from "@/utils/file-utils";
 import { formatStringToPath } from "@/utils/string-utils";
-import { Box, Stack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 // import SidebarTag from "./SidebarTag";
 import { groupComponentsByCategory } from "@/utils/collection-utils";
 import SidebarTag from "./SidebarTag";
+import { Box, Stack } from "@chakra-ui/react";
 
 interface ISidebarProps {
-  className: string;
+  className?: string;
 }
 
 export interface GroupedComponent {
@@ -29,11 +29,13 @@ const Sidebar = ({ className }: ISidebarProps) => {
   }, []);
 
   return (
-    <div className={`${className} flex flex-col gap-3`}>
-      {Object.entries(categories).map(([category, elements]) => (
-        <Category key={category} name={category} elements={elements} />
-      ))}
-    </div>
+    <Box className="!w-[250px] !pl-4">
+      <Box className={`${className} flex flex-col gap-3`} position="fixed">
+        {Object.entries(categories).map(([category, elements]) => (
+          <Category key={category} name={category} elements={elements} />
+        ))}
+      </Box>
+    </Box>
   );
 };
 

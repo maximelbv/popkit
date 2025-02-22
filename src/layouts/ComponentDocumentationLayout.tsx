@@ -39,6 +39,7 @@ const ComponentDocumentationLayout = () => {
           <div className="flex gap-2">
             {dependencies.map((dep) => (
               <Button
+                key={dep.name}
                 asChild
                 variant="subtle"
                 className="!rounded-full !px-4 !py-[1px]"
