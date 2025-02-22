@@ -35,5 +35,5 @@ export interface IComponent {
   code?: ICode;
   props?: IProp[];
   dependencies?: IDependency[];
-  status: Status;
+  status?: Status;
 }
