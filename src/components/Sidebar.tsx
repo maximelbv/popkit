@@ -61,10 +61,10 @@ const Category = ({
               key={path}
               className={`${
                 isActive
-                  ? "text-text-primary hover:bg-text-primary"
+                  ? "text-text-primary before:bg-text-primary"
                   : "!text-text-muted"
               } relative group flex items-center gap-1.5 before:content-[''] before:w-[1px] 
-              before:h-[16px] before:bg-none before:top-1/2 before:-translate-y-1/2 before:left-[-17px] before:absolute before:rounded-full`}
+              before:h-[16px] before:bg-none before:top-1/2 before:-translate-y-1/2 before:left-[-17px] before:absolute before:rounded-full custom-text-hover-anim`}
               to={path}
             >
               <span className="group-hover:text-text-primary !text-[14px] !font-medium custom-text-hover-anim">
