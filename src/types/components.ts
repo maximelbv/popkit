@@ -3,6 +3,7 @@ import { IDependency } from "./dependencies";
 import { Category } from "./categories";
 
 export type CodeFormat = "js" | "ts";
+export type Status = "new" | "updated";
 
 export interface IProp {
   property: string;
@@ -34,4 +35,5 @@ export interface IComponent {
   code?: ICode;
   props?: IProp[];
   dependencies?: IDependency[];
+  status: Status;
 }

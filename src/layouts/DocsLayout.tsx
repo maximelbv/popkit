@@ -9,7 +9,7 @@ const DocsLayout = () => {
     <>
       <Header />
       <div className="flex gap-2 max-w-layout-max-w !p-4 !m-auto !mt-[30px]">
-        <Sidebar className="!w-[200px]" />
+        <Sidebar className="!w-[250px]" />
         <main className="w-full">
           <Outlet key={location.pathname} />
         </main>

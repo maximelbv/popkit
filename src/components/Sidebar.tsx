@@ -1,5 +1,5 @@
 import { COMPONENTS_PATH, DOC_PATH } from "@/constants/paths";
-import { IComponent } from "@/types/components";
+import { IComponent, Status } from "@/types/components";
 import { importAllComponentsDocData } from "@/utils/file-utils";
 import { formatStringToPath } from "@/utils/string-utils";
 import { Box, Stack } from "@chakra-ui/react";
@@ -7,13 +7,21 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 // import SidebarTag from "./SidebarTag";
 import { groupComponentsByCategory } from "@/utils/collection-utils";
+import SidebarTag from "./SidebarTag";
 
 interface ISidebarProps {
   className: string;
 }
 
+export interface GroupedComponent {
+  name: string;
+  status?: string;
+}
+
 const Sidebar = ({ className }: ISidebarProps) => {
-  const [categories, setCategories] = useState<Record<string, string[]>>({});
+  const [categories, setCategories] = useState<
+    Record<string, GroupedComponent[]>
+  >({});
 
   useEffect(() => {
     const components = importAllComponentsDocData() as IComponent[];
@@ -29,19 +37,24 @@ const Sidebar = ({ className }: ISidebarProps) => {
   );
 };
 
-const Category = ({ name, elements }: { name: string; elements: string[] }) => {
-  console.log(elements);
+const Category = ({
+  name,
+  elements,
+}: {
+  name: string;
+  elements: GroupedComponent[];
+}) => {
   return (
     <Box className="flex flex-col">
       {name && <span className="!text-[18px] !font-bold !py-4">{name}</span>}
       <Stack gap={3} pl={4} borderLeft={"1px solid #ffffff1c"}>
-        {elements.map((elem: string) => {
+        {elements.map((elem: GroupedComponent) => {
+          const { name, status } = elem;
+
           const path = `/${DOC_PATH}/${COMPONENTS_PATH}/${formatStringToPath(
-            elem
+            name
           )}`;
           const isActive = location.pathname === path;
-          // const isNew = NEW.includes(elem);
-          // const isUpdated = UPDATED.includes(elem);
 
           return (
             <Link
@@ -55,10 +68,9 @@ const Category = ({ name, elements }: { name: string; elements: string[] }) => {
               to={path}
             >
               <span className="group-hover:text-text-primary !text-[14px] !font-medium custom-text-hover-anim">
-                {elem}
+                {name}
               </span>
-              {/* {isNew && <SidebarTag type="New" />}
-              {isUpdated && <SidebarTag type="Updated" />} */}
+              {status && <SidebarTag type={status as Status} />}
             </Link>
           );
         })}
