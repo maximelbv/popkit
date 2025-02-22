@@ -22,7 +22,3 @@ body {
 .custom-text-hover-anim {
   @apply transition ease-in-out duration-300;
 }
-
-.custom-text-hover-anim::before {
-  @apply transition ease-in-out duration-300;
-}
