@@ -25,18 +25,20 @@ const ComponentDocumentationLayout = () => {
   } = componentData;
 
   const previewContent = (
-    <div className="flex flex-col gap-16">
+    <div className="flex flex-col lg:gap-16 gap-8">
       {PreviewComponent && <PreviewComponent />}
       {props && (
-        <div className="flex flex-col gap-4">
-          <span className="!font-bold !text-3xl">Props</span>
+        <div className="flex flex-col lg:gap-4 gap-3">
+          <span className="!font-bold lg:!text-3xl !text-2xl">Props</span>
           <PropsTable props={props} />
         </div>
       )}
       {dependencies && (
-        <div className="flex flex-col gap-4">
-          <span className="!font-bold !text-3xl">Dependencies</span>
-          <div className="flex gap-2">
+        <div className="flex flex-col lg:gap-4 gap-3">
+          <span className="!font-bold lg:!text-3xl !text-2xl">
+            Dependencies
+          </span>
+          <div className="flex gap-2 flex-wrap">
             {dependencies.map((dep) => (
               <Button
                 key={dep.name}
@@ -58,8 +60,10 @@ const ComponentDocumentationLayout = () => {
   const codeContent = <div></div>;
 
   return (
-    <div className="!p-4 flex flex-col gap-10">
-      <h1 className="!text-[72px] !font-black !leading-[.7]">{name}</h1>
+    <div className="!p-4 flex flex-col lg:gap-10 gap-4">
+      <h1 className="lg:!text-[72px] !text-[46px] !font-black lg:!leading-[.7] !leading-[1]">
+        {name}
+      </h1>
       <TabsLayout previewContent={previewContent} codeContent={codeContent} />
     </div>
   );

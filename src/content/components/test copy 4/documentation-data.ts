@@ -28,6 +28,18 @@ export const documentationData: IComponent = {
       name: "gsap",
       link: "https://github.com/greensock/GSAP",
     },
+    {
+      name: "mgkfldnsklgfndklsngfdsgd",
+      link: "https://github.com/greensock/GSAP",
+    },
+    {
+      name: "three",
+      link: "https://github.com/mrdoob/three.js",
+    },
+    {
+      name: "gsap",
+      link: "https://github.com/greensock/GSAP",
+    },
   ],
   code: {
     component: [

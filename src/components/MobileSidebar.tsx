@@ -29,7 +29,7 @@ const MobileSidebar = () => {
     >
       <DrawerBackdrop />
       <DrawerTrigger asChild>
-        <Button variant="outline" display={{ base: "block", md: "none" }}>
+        <Button variant="outline" display={{ base: "block", lg: "none" }}>
           <RiMenu3Fill />
         </Button>
       </DrawerTrigger>

@@ -11,7 +11,7 @@ export default function DocsLayout() {
       <Header />
 
       <div className="flex gap-2 max-w-layout-max-w !m-auto !mt-22">
-        <Box display={{ base: "none", md: "block" }}>
+        <Box display={{ base: "none", lg: "block" }}>
           <Sidebar />
         </Box>
         <main className="w-full">
