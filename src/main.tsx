@@ -6,7 +6,7 @@ import "./globals.css";
 import LandingPage from "@/pages/LandingPage";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
 import DocumentationPageLayout from "@/layouts/DocumentationPageLayout";
-import ComponentsProvider from "./providers/ComponentsProvider";
+import ComponentsProvider from "./Providers/ComponentsProvider";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
