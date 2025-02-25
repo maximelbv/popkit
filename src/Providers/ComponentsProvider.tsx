@@ -7,11 +7,13 @@ interface ComponentsProviderProps {
   children: React.ReactNode;
 }
 
-export function ComponentsProvider({ children }: ComponentsProviderProps) {
+const ComponentsProvider = ({ children }: ComponentsProviderProps) => {
   const components: IComponent[] = getAllComponents();
   return (
     <ComponentsContext.Provider value={components}>
       {children}
     </ComponentsContext.Provider>
   );
-}
+};
+
+export default ComponentsProvider;
