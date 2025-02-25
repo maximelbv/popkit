@@ -1,10 +1,4 @@
-import { ICode } from "@/types/components";
-
-interface IComponentOverviewProps {
-  code: ICode;
-}
-
-const ComponentOverview = ({ code }: IComponentOverviewProps) => {
+const ComponentOverview = () => {
   return <div>ComponentOverview</div>;
 };
 

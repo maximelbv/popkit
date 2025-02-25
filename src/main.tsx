@@ -5,8 +5,8 @@ import { Provider } from "@/components/ui/provider.tsx";
 import "./globals.css";
 import LandingPage from "@/pages/LandingPage";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
-import { ComponentsProvider } from "@/providers/ComponentsProvider";
 import DocumentationPageLayout from "@/layouts/DocumentationPageLayout";
+import { ComponentsProvider } from "@/providers/ComponentsProvider";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
