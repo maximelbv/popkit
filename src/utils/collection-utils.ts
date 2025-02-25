@@ -1,9 +1,10 @@
 import { Categories } from "@/constants/categories";
+import { Status } from "@/constants/status";
 import { IComponent } from "@/types/components";
 
 export interface GroupedComponent {
   name: string;
-  status?: string;
+  status?: (typeof Status)[keyof typeof Status];
 }
 
 export const groupComponentsByCategory = (

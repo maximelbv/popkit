@@ -14,14 +14,14 @@ const DocumentationPageLayout = () => {
 
   if (!componentData) return <div>❌ No component found.</div>;
 
-  const { name, code, props, dependencies } = componentData;
+  const { name, props, dependencies } = componentData;
 
   return (
     <div className="!p-4 flex flex-col lg:gap-10 gap-4">
       <h1 className="lg:!text-[72px] !text-[46px] !font-black lg:!leading-[.7] !leading-[1]">
         {name}
       </h1>
-      <ComponentOverview code={code} />
+      <ComponentOverview />
       {props && (
         <DocumentationElement title="Props">
           <PropsTable props={props} />

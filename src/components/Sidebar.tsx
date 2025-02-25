@@ -1,6 +1,9 @@
 import { COMPONENTS_PATH, DOC_PATH } from "@/constants/paths";
 import { formatStringToPath } from "@/utils/string-utils";
-import { groupComponentsByCategory } from "@/utils/collection-utils";
+import {
+  GroupedComponent,
+  groupComponentsByCategory,
+} from "@/utils/collection-utils";
 import { useComponents } from "@/hooks/useComponents";
 import { Link, useLocation } from "react-router";
 import SidebarTag from "./SidebarTag";
@@ -27,7 +30,7 @@ const Sidebar = ({ className }: ISidebarProps) => {
 
 interface CategoryProps {
   name: string;
-  elements: { name: string; status?: string }[];
+  elements: GroupedComponent[];
 }
 
 const Category = ({ name, elements }: CategoryProps) => {
