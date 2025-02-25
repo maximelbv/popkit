@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import { Box } from "@chakra-ui/react";
 
-export default function DocsLayout() {
+const DocumentationLayout = () => {
   const location = useLocation();
 
   return (
@@ -20,4 +20,6 @@ export default function DocsLayout() {
       </div>
     </>
   );
-}
+};
+
+export default DocumentationLayout;

@@ -1,9 +1,6 @@
-import { ComponentType } from "react";
 import { IDependency } from "./dependencies";
-import { Category } from "./categories";
-
-export type CodeFormat = "js" | "ts";
-export type Status = "new" | "updated";
+import { Categories } from "@/constants/categories";
+import { Status } from "@/constants/status";
 
 export interface IProp {
   property: string;
@@ -12,28 +9,19 @@ export interface IProp {
   description: string;
 }
 
-export interface ICodeBlock {
-  name: string;
-  filePath: string;
-}
-
-export interface IComponentBlock {
-  format: CodeFormat;
-  withTailwind: boolean;
-  filePath: string;
-}
-
 export interface ICode {
-  component: IComponentBlock[];
-  additional: ICodeBlock[];
+  js: string;
+  ts: string;
+  jsTailwind: string;
+  tsTailwind: string;
 }
 
 export interface IComponent {
   name: string;
-  category: Category;
-  preview?: ComponentType;
-  code?: ICode;
+  category: (typeof Categories)[keyof typeof Categories];
+  status?: (typeof Status)[keyof typeof Status];
+  code: ICode;
+  // installation?: ...;
   props?: IProp[];
   dependencies?: IDependency[];
-  status?: Status;
 }

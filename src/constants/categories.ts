@@ -1,10 +1,4 @@
-import { ICategory } from "@/types/categories";
-
-export const CategoriesList: ICategory[] = [
-  {
-    name: "Text Animation",
-  },
-  {
-    name: "Data vizualization",
-  },
-] as const;
+export const Categories = {
+  BUTTONS: "Buttons",
+  TEST: "Test",
+} as const;
