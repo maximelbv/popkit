@@ -1,13 +1,21 @@
-import { GroupedComponent } from "@/components/Sidebar";
+import { Categories } from "@/constants/categories";
 import { IComponent } from "@/types/components";
+
+export interface GroupedComponent {
+  name: string;
+  status?: string;
+}
 
 export const groupComponentsByCategory = (
   components: IComponent[]
 ): Record<string, GroupedComponent[]> => {
+  const validCategories = Object.values(Categories);
   const groupedCategories: Record<string, GroupedComponent[]> = {};
 
   components.forEach((component) => {
-    const category = component.category || "Other";
+    const category = validCategories.includes(component.category)
+      ? component.category
+      : "Other";
     if (!groupedCategories[category]) {
       groupedCategories[category] = [];
     }

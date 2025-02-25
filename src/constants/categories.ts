@@ -1,4 +1,4 @@
 export const Categories = {
   BUTTONS: "Buttons",
-  TEST: "Test",
+  DATA_VIZ: "Data Vizualization",
 } as const;
