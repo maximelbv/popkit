@@ -4,9 +4,9 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { Provider } from "@/components/ui/provider.tsx";
 import "./globals.css";
 import LandingPage from "@/pages/LandingPage";
-import DocumentationPageLayout from "./layouts/DocumentationPageLayout";
-import DocumentationLayout from "./layouts/DocumentationLayout";
-import { ComponentsProvider } from "./Providers/ComponentsProvider";
+import DocumentationLayout from "@/layouts/DocumentationLayout";
+import { ComponentsProvider } from "@/providers/ComponentsProvider";
+import DocumentationPageLayout from "@/layouts/DocumentationPageLayout";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
