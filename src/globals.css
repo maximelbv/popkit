@@ -5,6 +5,7 @@
 
 @theme {
   --color-background: #050608;
+  --color-elem-background: #18181b;
   --color-text-primary: #fff;
   --color-text-muted: #a1a1aa;
   --color-border-default: #27272a;

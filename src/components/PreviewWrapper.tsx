@@ -8,7 +8,7 @@ interface IPreviewWrapperProps {
 const PreviewWrapper = ({ children, className }: IPreviewWrapperProps) => {
   return (
     <div
-      className={`${className} h-[400px] !border !border-border-default rounded-3xl flex items-center justify-center`}
+      className={`${className} h-[400px] !border !border-border-default rounded-xl flex items-center justify-center`}
     >
       {children}
     </div>

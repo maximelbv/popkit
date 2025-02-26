@@ -1,6 +1,12 @@
 import { IDependency } from "./dependencies";
 import { Categories } from "@/constants/categories";
 import { Status } from "@/constants/status";
+import { JSX } from "react";
+
+export type InstallationCodeBlock =
+  | string
+  | ICode
+  | { [key: string]: string | ICode };
 
 export interface IProp {
   property: string;
@@ -10,18 +16,36 @@ export interface IProp {
 }
 
 export interface ICode {
-  js: string;
-  ts: string;
-  jsTailwind: string;
-  tsTailwind: string;
+  js?: string;
+  ts?: string;
+  jsTailwind?: string;
+  tsTailwind?: string;
+}
+
+export interface IInstallationStep {
+  step: number;
+  title: string;
+  description?: string;
+  codeBlock?: InstallationCodeBlock;
+}
+
+export interface IInstallationMode {
+  mode: string;
+  steps: IInstallationStep[];
+}
+
+export interface IOverview {
+  preview: () => JSX.Element;
+  code?: string;
 }
 
 export interface IComponent {
   name: string;
+  description?: string;
   category: (typeof Categories)[keyof typeof Categories];
   status?: (typeof Status)[keyof typeof Status];
-  code: ICode;
-  // installation?: ...;
+  overview: IOverview;
+  installation?: IInstallationMode[];
   props?: IProp[];
   dependencies?: IDependency[];
 }
