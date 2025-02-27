@@ -7,6 +7,7 @@ import LandingPage from "@/pages/LandingPage";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
 import DocumentationPageLayout from "@/layouts/DocumentationPageLayout";
 import ComponentsProvider from "./Providers/ComponentsProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -24,6 +25,7 @@ createRoot(document.getElementById("root")!).render(
           </Routes>
         </BrowserRouter>
       </ComponentsProvider>
+      <Toaster />
     </Provider>
   </StrictMode>
 );

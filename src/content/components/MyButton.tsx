@@ -83,7 +83,9 @@ const myButtonOverview = {
   },
   code: `
   const MyButton = () => {
-    <button>My Button</button>;
+    return <button>
+      My Button
+    </button>;
   }
   `,
 };

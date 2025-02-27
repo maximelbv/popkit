@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { FiCopy } from "react-icons/fi";
+import { FaRegCircleCheck } from "react-icons/fa6";
 
 interface ICodeBlockProps {
   language: string;
@@ -28,12 +30,13 @@ const CodeBlock = ({ language, code }: ICodeBlockProps) => {
 
   const handleCopy = async () => {
     try {
+      if (!navigator.clipboard) {
+        console.error("Clipboard API not suported");
+        return;
+      }
       await navigator.clipboard.writeText(code);
       setCopied(true);
-
-      setTimeout(() => {
-        setCopied(false);
-      }, 2000);
+      setTimeout(() => setCopied(false), 1500);
     } catch (error) {
       console.error("Error during text copy :", error);
     }
@@ -43,19 +46,9 @@ const CodeBlock = ({ language, code }: ICodeBlockProps) => {
     <div style={{ position: "relative" }}>
       <button
         onClick={handleCopy}
-        style={{
-          position: "absolute",
-          top: "0.5rem",
-          right: "0.5rem",
-          background: "none",
-          border: "1px solid var(--color-border-default)",
-          borderRadius: "4px",
-          padding: "0.25rem 0.5rem",
-          cursor: "pointer",
-          color: "#c9d1d9",
-        }}
+        className="!cursor-pointer !absolute !top-2 !right-2 !p-2 rounded-md hover:!bg-background"
       >
-        {copied ? "Copié !" : "Copier"}
+        {copied ? <FaRegCircleCheck /> : <FiCopy />}
       </button>
       <SyntaxHighlighter language={language} style={customStyles}>
         {code}
