@@ -38,7 +38,6 @@ const manualInstallation = {
     {
       step: 3,
       title: "Utilisation de base",
-      description: "Exemple de code avec JSX.",
       codeBlock: {
         js: `<MyButton>Javascript</MyButton>`,
         ts: `<MyButton>Typescript</MyButton>`,

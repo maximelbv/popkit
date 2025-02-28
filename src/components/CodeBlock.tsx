@@ -7,25 +7,36 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 interface ICodeBlockProps {
   language?: string;
   code: string;
+  className?: string;
+  highlightStyle?: React.ComponentProps<typeof SyntaxHighlighter>["style"];
 }
 
-const customStyles = {
-  ...oneDark,
-  'code[class*="language-"]': {
-    ...oneDark['code[class*="language-"]'],
-    background: "var(--color-elem-background)",
-    color: "#c9d1d9",
-  },
-  'pre[class*="language-"]': {
-    ...oneDark['pre[class*="language-"]'],
-    background: "var(--color-elem-background)",
-    borderRadius: "8px",
-    border: "1px solid var(--color-border-default)",
-  },
-};
-
-const CodeBlock = ({ language = "ts", code }: ICodeBlockProps) => {
+const CodeBlock = ({
+  language = "ts",
+  code,
+  className,
+  highlightStyle = {},
+}: ICodeBlockProps) => {
   const [copied, setCopied] = useState(false);
+
+  const customStyles = {
+    ...oneDark,
+    ...highlightStyle,
+    'code[class*="language-"]': {
+      ...oneDark['code[class*="language-"]'],
+      ...highlightStyle['code[class*="language-"]'],
+      background: "var(--color-elem-background)",
+      color: "#c9d1d9",
+    },
+    'pre[class*="language-"]': {
+      ...oneDark['pre[class*="language-"]'],
+      ...highlightStyle['pre[class*="language-"]'],
+      background: "var(--color-elem-background)",
+      borderRadius: "8px",
+      margin: "0",
+      border: "1px solid var(--color-border-default)",
+    },
+  };
 
   const handleCopy = async () => {
     try {
@@ -42,10 +53,10 @@ const CodeBlock = ({ language = "ts", code }: ICodeBlockProps) => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative" }} className={`${className}`}>
       <button
         onClick={handleCopy}
-        className="!cursor-pointer !absolute !top-2 !right-2 !p-2 rounded-md hover:!bg-background"
+        className={`!cursor-pointer !absolute !top-2 !right-2 !p-2 rounded-md hover:!bg-background`}
       >
         {copied ? <FaRegCircleCheck /> : <FiCopy />}
       </button>
