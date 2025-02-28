@@ -30,8 +30,8 @@ const InstallationCodeBlockRenderer = ({
   if (entries.length === 0) return null;
 
   return (
-    <Tabs.Root>
-      <Tabs.List>
+    <Tabs.Root defaultValue={entries[0]?.[0] || ""} variant="line">
+      <Tabs.List rounded="l3" className="w-fit">
         {entries.map(([key]) => (
           <Tabs.Trigger value={key} key={key}>
             {key}
@@ -39,7 +39,7 @@ const InstallationCodeBlockRenderer = ({
         ))}
       </Tabs.List>
       {entries.map(([key, value]) => (
-        <Tabs.Content value={key} key={key}>
+        <Tabs.Content className="!pt-2" value={key} key={key}>
           {typeof value === "string" ? (
             <CodeBlock code={value} />
           ) : isICode(value) ? (

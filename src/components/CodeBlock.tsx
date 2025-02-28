@@ -19,7 +19,6 @@ const customStyles = {
   'pre[class*="language-"]': {
     ...oneDark['pre[class*="language-"]'],
     background: "var(--color-elem-background)",
-    padding: "0",
     borderRadius: "8px",
     border: "1px solid var(--color-border-default)",
   },

@@ -27,51 +27,59 @@ const ComponentInstallation = ({
   };
 
   return (
-    <Tabs.Root variant="line">
-      <Tabs.List>
-        {installation.map((mode, index) => (
-          <Tabs.Trigger value={mode.mode} key={index}>
-            {mode.mode}
-          </Tabs.Trigger>
-        ))}
-      </Tabs.List>
+    <div>
+      <Tabs.Root defaultValue={installation[0].mode} variant="line">
+        <Tabs.List rounded="l3" className="w-fit">
+          {installation.map((mode, index) => (
+            <Tabs.Trigger value={mode.mode} key={index}>
+              {mode.mode}
+            </Tabs.Trigger>
+          ))}
+        </Tabs.List>
 
-      {installation.map((mode, index) => {
-        const availableVariants = getAvailableVariants(mode.steps);
-        const selectedVariant = mode.variantSelectable
-          ? modeVariants[index] || availableVariants[0] || "js"
-          : "js";
+        {installation.map((mode, index) => {
+          const availableVariants = getAvailableVariants(mode.steps);
+          const selectedVariant = mode.variantSelectable
+            ? modeVariants[index] || availableVariants[0] || "js"
+            : "js";
 
-        return (
-          <Tabs.Content value={mode.mode} key={index}>
-            {mode.variantSelectable && availableVariants.length > 0 && (
-              <InstallationVariantSelector
-                onChangeVariant={(v) => handleVariantChange(index, v)}
-                availableVariants={availableVariants}
-                defaultVariant={selectedVariant}
-              />
-            )}
-            <TimelineRoot>
-              {mode.steps.map((step, stepIndex) => (
-                <TimelineItem key={stepIndex}>
-                  <TimelineConnector>{stepIndex + 1}</TimelineConnector>
-                  <TimelineContent>
-                    <div>{step.title}</div>
-                    {step.description && <div>{step.description}</div>}
-                    {step.codeBlock && (
-                      <InstallationCodeBlockRenderer
-                        codeBlock={step.codeBlock}
-                        variant={selectedVariant}
-                      />
-                    )}
-                  </TimelineContent>
-                </TimelineItem>
-              ))}
-            </TimelineRoot>
-          </Tabs.Content>
-        );
-      })}
-    </Tabs.Root>
+          return (
+            <Tabs.Content value={mode.mode} key={index} className="!mt-4">
+              {mode.variantSelectable && availableVariants.length > 0 && (
+                <InstallationVariantSelector
+                  onChangeVariant={(v) => handleVariantChange(index, v)}
+                  availableVariants={availableVariants}
+                  defaultVariant={selectedVariant}
+                />
+              )}
+              <TimelineRoot>
+                {mode.steps.map((step, stepIndex) => (
+                  <TimelineItem key={stepIndex}>
+                    <TimelineConnector>{stepIndex + 1}</TimelineConnector>
+                    <TimelineContent className="!gap-1">
+                      <span className="!font-bold !leading-5">
+                        {step.title}
+                      </span>
+                      {step.description && (
+                        <span className="!text-text-muted !text-sm">
+                          {step.description}
+                        </span>
+                      )}
+                      {step.codeBlock && (
+                        <InstallationCodeBlockRenderer
+                          codeBlock={step.codeBlock}
+                          variant={selectedVariant}
+                        />
+                      )}
+                    </TimelineContent>
+                  </TimelineItem>
+                ))}
+              </TimelineRoot>
+            </Tabs.Content>
+          );
+        })}
+      </Tabs.Root>
+    </div>
   );
 };
 
