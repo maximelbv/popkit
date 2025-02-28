@@ -4,6 +4,7 @@ import ComponentOverview from "@/components/ComponentOverview";
 import DocumentationElement from "@/components/DocumentationElement";
 import DependenciesList from "@/components/DependenciesList";
 import { useComponents } from "@/hooks/useComponents";
+import ComponentInstallation from "@/components/ComponentInstallation";
 
 const DocumentationPageLayout = () => {
   const { componentName } = useParams();
@@ -32,7 +33,7 @@ const DocumentationPageLayout = () => {
       <ComponentOverview overview={overview} />
       {installation && (
         <DocumentationElement title="Installation">
-          <></>
+          <ComponentInstallation installation={installation} />
         </DocumentationElement>
       )}
       {props && (

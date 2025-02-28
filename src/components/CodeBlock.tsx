@@ -5,7 +5,7 @@ import { FiCopy } from "react-icons/fi";
 import { FaRegCircleCheck } from "react-icons/fa6";
 
 interface ICodeBlockProps {
-  language: string;
+  language?: string;
   code: string;
 }
 
@@ -25,7 +25,7 @@ const customStyles = {
   },
 };
 
-const CodeBlock = ({ language, code }: ICodeBlockProps) => {
+const CodeBlock = ({ language = "ts", code }: ICodeBlockProps) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {

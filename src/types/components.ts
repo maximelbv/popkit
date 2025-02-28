@@ -8,6 +8,8 @@ export type InstallationCodeBlock =
   | ICode
   | { [key: string]: string | ICode };
 
+export type Variant = "js" | "ts" | "jsTailwind" | "tsTailwind";
+
 export interface IProp {
   property: string;
   type: string;
@@ -23,7 +25,6 @@ export interface ICode {
 }
 
 export interface IInstallationStep {
-  step: number;
   title: string;
   description?: string;
   codeBlock?: InstallationCodeBlock;
@@ -32,6 +33,7 @@ export interface IInstallationStep {
 export interface IInstallationMode {
   mode: string;
   steps: IInstallationStep[];
+  variantSelectable?: boolean;
 }
 
 export interface IOverview {
