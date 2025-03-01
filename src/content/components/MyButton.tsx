@@ -5,7 +5,7 @@ import PreviewWrapper from "@/components/PreviewWrapper";
 import { Categories } from "@/constants/categories";
 import { Status } from "@/constants/status";
 import { IComponent, ICode } from "@/types/components";
-import { Input } from "@chakra-ui/react";
+import { Input, Button } from "@chakra-ui/react";
 import { useState } from "react";
 
 const manualInstallation = {
@@ -35,60 +35,6 @@ const manualInstallation = {
         tsTailwind: `import MyButton from 'my-button-package'; // avec Tailwind`,
       } as ICode,
     },
-    {
-      step: 3,
-      title: "Utilisation de base",
-      codeBlock: {
-        js: `<MyButton>Javascript</MyButton>`,
-        ts: `<MyButton>Typescript</MyButton>`,
-        jsTailwind: `<MyButton>Javascript + Tailwind</MyButton>`,
-        tsTailwind: `<MyButton>Typescript + Tailwind</MyButton>`,
-      } as ICode,
-    },
-    {
-      step: 4,
-      title: "Configuration avancée",
-      description: "Personnalisation avec des props.",
-      codeBlock: {
-        js: `<MyButton 
-  color="primary"
-  size="large"
->
-  Click Me JS
-</MyButton>`,
-        ts: `<MyButton 
-  color="primary"
-  size="large"
->
-  Click Me TS
-</MyButton>`,
-        jsTailwind: `<MyButton 
-        color="primary"
-        size="large"
-      >
-        Click Me JS + TW
-      </MyButton>`,
-        tsTailwind: `<MyButton 
-  color="primary"
-  size="large"
->
-  Click Me TS + TW
-</MyButton>`,
-      } as ICode,
-    },
-    {
-      step: 5,
-      title: "Configuration Tailwind",
-      description: "Personnalisation en utilisant Tailwind CSS.",
-      codeBlock: {
-        jsTailwind: `<MyButton className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-  Click Me
-</MyButton>`,
-        tsTailwind: `<MyButton className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-  Click Me
-</MyButton>`,
-      } as ICode,
-    },
   ],
 };
 
@@ -116,17 +62,13 @@ const scriptTagInstallation = {
       step: 1,
       title: "Ajout du script",
       description: "Ajoutez ce script dans votre fichier HTML.",
-      codeBlock: `
-<script src="https://cdn.example.com/my-button.js"></script>
-      `,
+      codeBlock: `<script src="https://cdn.example.com/my-button.js"></script>`,
     },
     {
       step: 2,
       title: "Utilisation dans le DOM",
       description: "Ajoutez le composant dans votre fichier HTML.",
-      codeBlock: `
-<my-button>Click Me</my-button>
-      `,
+      codeBlock: `<my-button>Click Me</my-button>`,
     },
   ],
 };
@@ -140,54 +82,8 @@ const advancedConfiguration = {
       title: "Ajout d'une icône",
       description: "Ajoutez une icône à votre bouton.",
       codeBlock: {
-        js: `
-<MyButton>
-  <Icon name="check" />
-  Confirm
-</MyButton>
-        `,
-        ts: `
-<MyButton>
-  <Icon name="check" />
-  Confirm
-</MyButton>
-        `,
-      } as ICode,
-    },
-    {
-      step: 2,
-      title: "Utilisation avec Redux",
-      description:
-        "Exemple d'utilisation du bouton dans un environnement Redux.",
-      codeBlock: {
-        js: `
-import { useDispatch } from 'react-redux';
-
-const MyComponent = () => {
-  const dispatch = useDispatch();
-  
-  return (
-    <MyButton onClick={() => dispatch({ type: 'CLICK_ACTION' })}>
-      Dispatch Action
-    </MyButton>
-  );
-}
-        `,
-        ts: `
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../store';
-
-const MyComponent = () => {
-  const dispatch: AppDispatch = useDispatch();
-  
-  return (
-    <MyButton onClick={() => dispatch({ type: 'CLICK_ACTION' })}>
-      Dispatch Action
-    </MyButton>
-  );
-}
-        `,
-      } as ICode,
+        js: `<MyButton>\n  <Icon name="check" />\n  Confirm\n</MyButton>`,
+      },
     },
   ],
 };
@@ -215,13 +111,11 @@ const myButtonOverview = {
       </div>
     );
   },
-  code: `
-  const MyButton = () => {
+  code: `const MyButton = () => {
     return <button>
       My Button
     </button>;
-  }
-  `,
+  }`,
 };
 
 const myButtonComponent: IComponent = {
@@ -262,7 +156,18 @@ const myButtonComponent: IComponent = {
       description: "Callback exécuté lors du clic sur le bouton.",
     },
   ],
-  dependencies: [],
+  dependencies: [
+    { name: "three.js", link: "https://github.com/mrdoob/three.js/" },
+  ],
+  examples: () => [
+    <Button colorScheme="blue">Default Button</Button>,
+    <Button colorScheme="red" size="lg">
+      Large Red Button
+    </Button>,
+    <Button colorScheme="green" size="sm">
+      Disabled Small Button
+    </Button>,
+  ],
 };
 
 export default myButtonComponent;

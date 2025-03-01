@@ -15,8 +15,15 @@ const DocumentationPageLayout = () => {
 
   if (!componentData) return <div>❌ No component found.</div>;
 
-  const { name, description, overview, installation, props, dependencies } =
-    componentData;
+  const {
+    name,
+    description,
+    overview,
+    installation,
+    props,
+    dependencies,
+    examples,
+  } = componentData;
 
   return (
     <div className="!p-4 flex flex-col lg:gap-6 gap-4">
@@ -41,9 +48,13 @@ const DocumentationPageLayout = () => {
           <PropsTable props={props} />
         </DocumentationElement>
       )}
-      <DocumentationElement title="Examples ?">
-        <></>
-      </DocumentationElement>
+      {examples && (
+        <DocumentationElement title="Examples">
+          {examples().map((example, index) => (
+            <div key={index}>{example}</div>
+          ))}
+        </DocumentationElement>
+      )}
       {dependencies && (
         <DocumentationElement title="Dependencies">
           <DependenciesList dependencies={dependencies} />

@@ -48,6 +48,7 @@ export interface IComponent {
   status?: (typeof Status)[keyof typeof Status];
   overview: IOverview;
   installation?: IInstallationMode[];
+  examples?: () => JSX.Element[];
   props?: IProp[];
   dependencies?: IDependency[];
 }
