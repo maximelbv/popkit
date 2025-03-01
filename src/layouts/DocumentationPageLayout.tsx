@@ -1,10 +1,11 @@
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 import PropsTable from "@/components/PropsTable";
 import ComponentOverview from "@/components/ComponentOverview";
 import DocumentationElement from "@/components/DocumentationElement";
 import DependenciesList from "@/components/DependenciesList";
 import { useComponents } from "@/hooks/useComponents";
 import ComponentInstallation from "@/components/ComponentInstallation";
+import { DOC_PATH } from "@/constants/paths";
 
 const DocumentationPageLayout = () => {
   const { componentName } = useParams();
@@ -13,7 +14,7 @@ const DocumentationPageLayout = () => {
     (comp) => comp.name.toLowerCase().replace(/\s+/g, "-") === componentName
   );
 
-  if (!componentData) return <div>❌ No component found.</div>;
+  if (!componentData) return <Navigate to={`/${DOC_PATH}`} replace />;
 
   const {
     name,
