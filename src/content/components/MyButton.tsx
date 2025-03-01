@@ -50,38 +50,30 @@ const manualInstallation = {
       title: "Configuration avancée",
       description: "Personnalisation avec des props.",
       codeBlock: {
-        js: `
-<MyButton 
+        js: `<MyButton 
   color="primary"
   size="large"
 >
   Click Me JS
-</MyButton>
-        `,
-        ts: `
-<MyButton 
+</MyButton>`,
+        ts: `<MyButton 
   color="primary"
   size="large"
 >
   Click Me TS
-</MyButton>
-        `,
-        jsTailwind: `
-      <MyButton 
+</MyButton>`,
+        jsTailwind: `<MyButton 
         color="primary"
         size="large"
       >
         Click Me JS + TW
-      </MyButton>
-              `,
-        tsTailwind: `
-              <MyButton 
-                color="primary"
-                size="large"
-              >
-                Click Me TS + TW
-              </MyButton>
-                      `,
+      </MyButton>`,
+        tsTailwind: `<MyButton 
+  color="primary"
+  size="large"
+>
+  Click Me TS + TW
+</MyButton>`,
       } as ICode,
     },
     {
@@ -89,16 +81,12 @@ const manualInstallation = {
       title: "Configuration Tailwind",
       description: "Personnalisation en utilisant Tailwind CSS.",
       codeBlock: {
-        jsTailwind: `
-<MyButton className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        jsTailwind: `<MyButton className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Click Me
-</MyButton>
-        `,
-        tsTailwind: `
-<MyButton className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+</MyButton>`,
+        tsTailwind: `<MyButton className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Click Me
-</MyButton>
-        `,
+</MyButton>`,
       } as ICode,
     },
   ],
@@ -108,7 +96,6 @@ const cliInstallation = {
   mode: "cli",
   steps: [
     {
-      step: 1,
       title: "Installation via CLI",
       description:
         "Utilisez l'une des commandes ci-dessous pour installer le package.",
@@ -118,21 +105,6 @@ const cliInstallation = {
         pnpm: "pnpm add -g my-button-cli",
         bun: "bun add -g my-button-cli",
       },
-    },
-    {
-      step: 2,
-      title: "Vérification de l'installation",
-      description:
-        "Exécutez la commande suivante pour vérifier l'installation.",
-      codeBlock: "my-button-cli --version",
-    },
-    {
-      step: 3,
-      title: "Utilisation de la CLI",
-      description: "Exemple d'utilisation de la CLI pour générer un composant.",
-      codeBlock: `
-my-button-cli generate --name=CustomButton --style=tailwind
-      `,
     },
   ],
 };

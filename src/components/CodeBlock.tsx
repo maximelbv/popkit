@@ -56,7 +56,7 @@ const CodeBlock = ({
     <div style={{ position: "relative" }} className={`${className}`}>
       <button
         onClick={handleCopy}
-        className={`!cursor-pointer !absolute !top-2 !right-2 !p-2 rounded-md hover:!bg-background`}
+        className={`!cursor-pointer !absolute !top-2 !right-2 !p-2 rounded-md hover:!bg-background !bg-elem-background`}
       >
         {copied ? <FaRegCircleCheck /> : <FiCopy />}
       </button>
