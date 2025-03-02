@@ -21,6 +21,10 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/" element={<LandingPage />} />
             <Route path={`/${DOC_PATH}`} element={<DocumentationLayout />}>
               <Route
+                index
+                element={<Navigate to={`${OVERVIEW_PATH}`} replace />}
+              />
+              <Route
                 path={`${OVERVIEW_PATH}`}
                 element={<DocumentationOverview />}
               />

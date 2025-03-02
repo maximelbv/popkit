@@ -1,12 +1,9 @@
-// MyButton.tsx
-
-import DocumentationElement from "@/components/DocumentationElement";
+import MiniPreviewWrapper from "@/components/MiniPreviewWrapper";
 import PreviewWrapper from "@/components/PreviewWrapper";
 import { Categories } from "@/constants/categories";
 import { Status } from "@/constants/status";
 import { IComponent, ICode } from "@/types/components";
-import { Input, Button } from "@chakra-ui/react";
-import { useState } from "react";
+import { Button } from "@chakra-ui/react";
 
 const manualInstallation = {
   mode: "manual",
@@ -88,26 +85,26 @@ const advancedConfiguration = {
   ],
 };
 
-const myButtonOverview = {
+const overview = {
   preview: function MyButtonPreview() {
-    const [text, setText] = useState("Default");
-
     return (
       <div className="flex flex-col gap-4">
         <PreviewWrapper reloadButton={true}>
           <div style={{ padding: "1rem", border: "1px solid #ccc" }}>
-            {text}
+            Default
           </div>
         </PreviewWrapper>
-
-        <DocumentationElement title="Customize">
-          <Input
-            type="text"
-            placeholder="Enter text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-        </DocumentationElement>
+      </div>
+    );
+  },
+  miniPreview: function MyButtonPreview() {
+    return (
+      <div className="flex flex-col gap-4">
+        <MiniPreviewWrapper>
+          <div style={{ padding: "1rem", border: "1px solid #ccc" }}>
+            Default
+          </div>
+        </MiniPreviewWrapper>
       </div>
     );
   },
@@ -116,6 +113,7 @@ const myButtonOverview = {
       My Button
     </button>;
   }`,
+  quickCopyCode: scriptTagInstallation.steps[0].codeBlock,
 };
 
 const myButtonComponent: IComponent = {
@@ -124,7 +122,7 @@ const myButtonComponent: IComponent = {
     "Un composant bouton simple avec différents modes d'installation et configurations avancées.",
   category: Categories.BUTTONS,
   status: Status.NEW,
-  overview: myButtonOverview,
+  overview: overview,
   installation: [
     manualInstallation,
     cliInstallation,

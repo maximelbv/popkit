@@ -37,8 +37,10 @@ export interface IInstallationMode {
 }
 
 export interface IOverview {
+  miniPreview?: () => JSX.Element;
   preview: () => JSX.Element;
   code?: string;
+  quickCopyCode?: string;
 }
 
 export interface IComponent {

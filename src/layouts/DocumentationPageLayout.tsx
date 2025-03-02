@@ -27,18 +27,19 @@ const DocumentationPageLayout = () => {
   } = componentData;
 
   return (
-    <div className="flex flex-col lg:gap-6 gap-4">
-      <div>
-        <h1 className="lg:!text-[72px] !text-[46px] !font-black lg:!leading-[.7] !leading-[1]">
-          {name}
-        </h1>
-        {description && (
-          <p className="text-text-muted md:!mt-4 !mt-2 !max-w-[600px]">
-            {description}
-          </p>
-        )}
+    <div className="flex flex-col lg:gap-12 gap-8">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2 lg:gap-4">
+          <h1 className="lg:!text-[72px] !text-[46px] !font-black lg:!leading-[.7] !leading-[1]">
+            {name}
+          </h1>
+          {description && (
+            <p className="text-text-muted !max-w-[600px]">{description}</p>
+          )}
+        </div>
+        <ComponentOverview overview={overview} />
       </div>
-      <ComponentOverview overview={overview} />
+
       {installation && (
         <DocumentationElement title="Installation">
           <ComponentInstallation installation={installation} />
