@@ -55,12 +55,12 @@ const ComponentCard = ({ component }: IComponentCardProps) => {
 
         <div className="flex gap-2">
           {overview.quickCopyCode && (
-            <Button variant="outline" size="xs" onClick={handleCopy}>
+            <Button variant="surface" size="xs" onClick={handleCopy}>
               {copied ? <FaRegCircleCheck /> : <FiCopy />}
               Copy
             </Button>
           )}
-          <Button variant="outline" size="xs" asChild>
+          <Button variant="surface" size="xs" asChild>
             <NavLink
               to={`/${DOC_PATH}/${COMPONENTS_PATH}/${formatStringToPath(name)}`}
             >
