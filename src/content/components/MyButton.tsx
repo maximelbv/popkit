@@ -94,7 +94,7 @@ const myButtonOverview = {
 
     return (
       <div className="flex flex-col gap-4">
-        <PreviewWrapper>
+        <PreviewWrapper reloadButton={true}>
           <div style={{ padding: "1rem", border: "1px solid #ccc" }}>
             {text}
           </div>
@@ -153,6 +153,7 @@ const myButtonComponent: IComponent = {
     {
       property: "onClick",
       type: "() => void",
+      default: '"medium"',
       description: "Callback exécuté lors du clic sur le bouton.",
     },
   ],
