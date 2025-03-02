@@ -27,7 +27,7 @@ const DocumentationPageLayout = () => {
   } = componentData;
 
   return (
-    <div className="!p-4 flex flex-col lg:gap-6 gap-4">
+    <div className="flex flex-col lg:gap-6 gap-4">
       <div>
         <h1 className="lg:!text-[72px] !text-[46px] !font-black lg:!leading-[.7] !leading-[1]">
           {name}

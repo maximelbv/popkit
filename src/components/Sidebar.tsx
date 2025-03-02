@@ -1,13 +1,13 @@
-import { COMPONENTS_PATH, DOC_PATH } from "@/constants/paths";
+import { COMPONENTS_PATH, DOC_PATH, OVERVIEW_PATH } from "@/constants/paths";
 import { formatStringToPath } from "@/utils/string-utils";
 import {
   GroupedComponent,
   groupComponentsByCategory,
 } from "@/utils/collection-utils";
 import { useComponents } from "@/hooks/useComponents";
-import { Link, useLocation } from "react-router";
+import { Link, NavLink, useLocation } from "react-router";
 import SidebarTag from "./SidebarTag";
-import { Box, Stack } from "@chakra-ui/react";
+import { Box, Button, Stack } from "@chakra-ui/react";
 
 interface ISidebarProps {
   className?: string;
@@ -18,8 +18,17 @@ const Sidebar = ({ className }: ISidebarProps) => {
   const categories = groupComponentsByCategory(components);
 
   return (
-    <Box className="!w-[225px] !pl-4">
-      <Box className={`${className} flex flex-col gap-3`} position="fixed">
+    <Box className="!w-[250px] !ml-4 !mt-4">
+      <Box
+        className={`${className} flex flex-col gap-3`}
+        position="fixed"
+        style={{ width: "inherit", maxWidth: "100%" }}
+      >
+        <NavLink to={`/${DOC_PATH}/${OVERVIEW_PATH}`}>
+          <Button variant="subtle" className="!w-full !mb-[-10px]">
+            Overview
+          </Button>
+        </NavLink>
         {Object.entries(categories).map(([category, elements]) => (
           <Category key={category} name={category} elements={elements} />
         ))}

@@ -45,7 +45,9 @@ const PropsTable = ({ props }: IPropsTableProps) => {
                   </Table.Cell>
                 )}
                 {prop.description && (
-                  <Table.Cell>{prop.description}</Table.Cell>
+                  <Table.Cell className="!text-nowrap md:!text-wrap">
+                    {prop.description}
+                  </Table.Cell>
                 )}
               </Table.Row>
             ))}

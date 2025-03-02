@@ -8,6 +8,8 @@ import DocumentationLayout from "@/layouts/DocumentationLayout";
 import DocumentationPageLayout from "@/layouts/DocumentationPageLayout";
 import ComponentsProvider from "./Providers/ComponentsProvider";
 import { Toaster } from "@/components/ui/toaster";
+import DocumentationOverview from "./components/DocumentationOverview";
+import { COMPONENTS_PATH, DOC_PATH, OVERVIEW_PATH } from "./constants/paths";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -17,9 +19,13 @@ createRoot(document.getElementById("root")!).render(
           <Routes>
             <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/" element={<LandingPage />} />
-            <Route path="/docs" element={<DocumentationLayout />}>
+            <Route path={`/${DOC_PATH}`} element={<DocumentationLayout />}>
               <Route
-                path="components/:componentName"
+                path={`${OVERVIEW_PATH}`}
+                element={<DocumentationOverview />}
+              />
+              <Route
+                path={`${COMPONENTS_PATH}/:componentName`}
                 element={<DocumentationPageLayout />}
               />
             </Route>
