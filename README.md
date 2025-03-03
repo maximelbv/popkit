@@ -1,8 +1,8 @@
-![Popkit Logo](./public/logo.svg)
+![Popkit Logo](./public/landing-logo.svg)
 
-**Elegant UI Components for React**
+# Popkit - **Elegant UI Components for React**
 
-> 🚧 Under construction
+> 🚧 Under construction 🚧
 
 ## License
 
