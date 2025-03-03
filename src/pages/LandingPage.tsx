@@ -17,7 +17,7 @@ const LandingPage = () => {
         <div className="flex flex-col items-center justify-center">
           <h1 className="!font-black !text-6xl">Popkit</h1>
           <p className="text-text-muted">Elegant UI Components for React</p>
-          <p className="text-text-muted">( 🚧 Under construction )</p>
+          <p className="text-text-muted">( 🚧 Under construction 🚧 )</p>
         </div>
         <div className="flex gap-2">
           <Button asChild size="xl" rounded="xl">
