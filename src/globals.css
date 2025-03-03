@@ -21,7 +21,7 @@
 }
 
 body {
-  @apply bg-background text-text-primary font-bricolage;
+  @apply bg-background text-text-primary font-bricolage min-h-0;
 }
 
 pre,
