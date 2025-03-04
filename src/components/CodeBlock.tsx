@@ -35,6 +35,7 @@ const CodeBlock = ({
       borderRadius: "8px",
       margin: "0",
       border: "1px solid var(--color-border-default)",
+      maxHeight: "415px",
     },
   };
 

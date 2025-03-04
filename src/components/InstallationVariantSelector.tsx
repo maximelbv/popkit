@@ -26,7 +26,11 @@ export const InstallationVariantSelector = ({
       ? defaultVariant
       : availableVariants[0];
 
-  const initialHasTailwind = initialVariant.includes("Tailwind");
+  const hasTailwindOptions = availableVariants.some((v) =>
+    v.includes("Tailwind")
+  );
+  const initialHasTailwind =
+    hasTailwindOptions && initialVariant.includes("Tailwind");
   const initialLanguage = initialHasTailwind
     ? (initialVariant.replace("Tailwind", "") as "js" | "ts")
     : (initialVariant as "js" | "ts");
@@ -77,21 +81,23 @@ export const InstallationVariantSelector = ({
 
   return (
     <div className="flex gap-4 items-center justify-center">
-      <div className="flex items-center justify-center gap-2">
-        <Switch.Root
-          checked={hasTailwind}
-          id="tailwind-toggle"
-          onCheckedChange={handleTailwindChange}
-        >
-          <Switch.HiddenInput />
-          <Switch.Control>
-            <Switch.Thumb />
-          </Switch.Control>
-          <Switch.Label className="flex items-center justify-center gap-2">
-            <RiTailwindCssFill className="fill-[#00BCFF]" /> Tailwind
-          </Switch.Label>
-        </Switch.Root>
-      </div>
+      {hasTailwindOptions && (
+        <div className="flex items-center justify-center gap-2">
+          <Switch.Root
+            checked={hasTailwind}
+            id="tailwind-toggle"
+            onCheckedChange={handleTailwindChange}
+          >
+            <Switch.HiddenInput />
+            <Switch.Control>
+              <Switch.Thumb />
+            </Switch.Control>
+            <Switch.Label className="flex items-center justify-center gap-2">
+              <RiTailwindCssFill className="fill-[#00BCFF]" /> Tailwind
+            </Switch.Label>
+          </Switch.Root>
+        </div>
+      )}
       <div className="flex items-center justify-center">
         <SelectRoot
           collection={languageCollection}

@@ -8,32 +8,6 @@ import { IComponent, ICode } from "@/types/components";
 import { Input } from "@chakra-ui/react";
 import { useState } from "react";
 
-const manualInstallation = {
-  mode: "manual",
-  variantSelectable: true,
-  steps: [
-    {
-      step: 1,
-      title: "Installation du package",
-      description:
-        "Installez le package via le gestionnaire de paquets de votre choix.",
-      codeBlock: {
-        js: "npm install my-barchart-package",
-        ts: "npm install my-barchart-package",
-      } as ICode,
-    },
-    {
-      step: 2,
-      title: "Importation du composant",
-      description: "Copiez-collez le code suivant pour importer le composant.",
-      codeBlock: {
-        js: `import MyBarChart from 'my-barchart-package';`,
-        ts: `import MyBarChart from 'my-barchart-package';`,
-      } as ICode,
-    },
-  ],
-};
-
 const myBarChartOverview = {
   preview: function MyBarChartPreview() {
     const [title, setTitle] = useState("Graphique en barres");
@@ -62,18 +36,104 @@ const myBarChartOverview = {
       </div>
     );
   },
-  code: `const MyBarChart = ({ title = "Graphique en barres" }) => {
-    return (
-      <div style={{ padding: "1rem", border: "1px solid #ccc" }}>
-        <h3>{title}</h3>
-        <div style={{ width: "100%", height: "200px", background: "#f0f0f0" }}>
-          [Graphique en barres mocké]
-        </div>
+  code: `import React, { useState, useEffect } from "react";
+
+const MyBarChart = ({
+  title = "Graphique en barres",
+  data = [
+    { label: "Janvier", value: 40 },
+    { label: "Février", value: 60 },
+    { label: "Mars", value: 80 },
+    { label: "Avril", value: 100 },
+  ],
+  width = "100%",
+  height = 300,
+  barColor = "#3498db",
+}) => {
+  const [animatedData, setAnimatedData] = useState(
+    data.map((d) => ({ ...d, animatedValue: 0 }))
+  );
+
+  useEffect(() => {
+    const animation = setTimeout(() => {
+      setAnimatedData(
+        data.map((d) => ({ ...d, animatedValue: d.value }))
+      );
+    }, 500);
+    return () => clearTimeout(animation);
+  }, [data]);
+
+  return (
+    <div
+      style={{
+        padding: "1rem",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+        background: "#fff",
+        maxWidth: "600px",
+        margin: "auto",
+      }}
+    >
+      <h3 style={{ textAlign: "center", marginBottom: "1rem" }}>{title}</h3>
+      <div
+        style={{
+          width,
+          height,
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "space-around",
+          background: "#f9f9f9",
+          padding: "10px",
+          borderRadius: "4px",
+        }}
+      >
+        {animatedData.map((d, index) => (
+          <div key={index} style={{ textAlign: "center" }}>
+            <div
+              style={{
+                width: "40px",
+                background: barColor,
+                transition: "height 1s ease-in-out",
+                borderRadius: "4px",
+              }}
+            ></div>
+            <span style={{ fontSize: "12px", display: "block", marginTop: "5px" }}>
+              {d.label}
+            </span>
+          </div>
+        ))}
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default MyBarChart;`,
+};
+const manualInstallation = {
+  mode: "manual",
+  variantSelectable: true,
+  steps: [
+    {
+      step: 1,
+      title: "Installation du package",
+      description:
+        "Installez le package via le gestionnaire de paquets de votre choix.",
+      codeBlock: {
+        js: "npm install my-barchart-package",
+        ts: "npm install my-barchart-package",
+      } as ICode,
+    },
+    {
+      step: 2,
+      title: "Importation du composant",
+      description: "Copiez-collez le code suivant pour importer le composant.",
+      codeBlock: {
+        js: `import MyBarChart from 'my-barchart-package';`,
+        ts: myBarChartOverview.code,
+      } as ICode,
+    },
+  ],
 };
 
 const myBarChartComponent: IComponent = {
