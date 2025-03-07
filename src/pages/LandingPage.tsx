@@ -14,9 +14,8 @@ const LandingPage = () => {
         className="max-w-layout-max-w !m-auto !mt-22 flex flex-col gap-6 items-center justify-center"
       >
         <Image src="/landing-logo.svg" />
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center gap-2">
           <h1 className="!font-black !text-6xl">Popkit</h1>
-          <p className="text-text-muted">Elegant UI Components for React</p>
           <p className="text-text-muted">( 🚧 Under construction 🚧 )</p>
         </div>
         <div className="flex gap-2">

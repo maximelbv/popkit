@@ -1,5 +1,3 @@
-// BarChart.tsx
-
 import DocumentationElement from "@/components/DocumentationElement";
 import PreviewWrapper from "@/components/PreviewWrapper";
 import { Categories } from "@/constants/categories";

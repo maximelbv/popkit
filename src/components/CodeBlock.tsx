@@ -12,7 +12,7 @@ interface ICodeBlockProps {
 }
 
 const CodeBlock = ({
-  language = "ts",
+  language = "tsx",
   code,
   className,
   highlightStyle = {},
@@ -54,14 +54,22 @@ const CodeBlock = ({
   };
 
   return (
-    <div style={{ position: "relative" }} className={`${className}`}>
+    <div
+      style={{ position: "relative" }}
+      className={`!max-w-full ${className}`}
+    >
       <button
         onClick={handleCopy}
         className={`!cursor-pointer !absolute !top-2 !right-2 !p-2 rounded-md hover:!bg-background !bg-elem-background`}
       >
         {copied ? <FaRegCircleCheck /> : <FiCopy />}
       </button>
-      <SyntaxHighlighter language={language} style={customStyles}>
+      <SyntaxHighlighter
+        language={language}
+        style={customStyles}
+        wrapLines={true}
+        wrapLongLines={true}
+      >
         {code}
       </SyntaxHighlighter>
     </div>

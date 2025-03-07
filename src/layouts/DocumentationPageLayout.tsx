@@ -27,7 +27,7 @@ const DocumentationPageLayout = () => {
   } = componentData;
 
   return (
-    <div className="flex flex-col lg:gap-12 gap-8">
+    <div className="flex flex-col lg:gap-12 gap-8 !max-w-full">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2 lg:gap-4">
           <h1 className="lg:!text-[72px] !text-[46px] !font-black lg:!leading-[.7] !leading-[1]">
@@ -57,7 +57,7 @@ const DocumentationPageLayout = () => {
           ))}
         </DocumentationElement>
       )}
-      {dependencies && (
+      {dependencies && dependencies.length > 0 && (
         <DocumentationElement title="Dependencies">
           <DependenciesList dependencies={dependencies} />
         </DocumentationElement>

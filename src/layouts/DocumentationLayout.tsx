@@ -14,7 +14,7 @@ const DocumentationLayout = () => {
         <Box display={{ base: "none", lg: "block" }}>
           <Sidebar />
         </Box>
-        <main className="w-full !p-4">
+        <main className="w-full !max-w-full overflow-hidden !p-4">
           <Outlet key={location.pathname} />
         </main>
       </div>
