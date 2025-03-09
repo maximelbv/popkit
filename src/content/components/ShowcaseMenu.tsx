@@ -1263,10 +1263,10 @@ const overview = {
   code: `import ShowcaseMenu from '@/components/ShowcaseMenu'
 
 const previewItems = [
-  { link: "#", text: "Palace of the Pink Skyes", image: "https://picsum.photos/1600" },
-  { link: "#", text: "Astral Mechanics", image: "https://picsum.photos/1800" },
-  { link: "#", text: "Blazed", image: "https://picsum.photos/1700" },
-  { link: "#", text: "Temple of the Rift", image: "https://picsum.photos/1500" },
+  { link: "#", text: "Div Soup", image: "https://picsum.photos/1600" },
+  { link: "#", text: "404 Labs", image: "https://picsum.photos/1800" },
+  { link: "#", text: "Aperture UI", image: "https://picsum.photos/1700" },
+  { link: "#", text: "Blackbox", image: "https://picsum.photos/1500" },
 ];
 
 export default function ShowcaseMenuPreview() {
