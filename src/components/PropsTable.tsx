@@ -29,14 +29,14 @@ const PropsTable = ({ props }: IPropsTableProps) => {
           <Table.Body>
             {props.map((prop: IProp) => (
               <Table.Row key={prop.property} className="!text-md">
-                {prop.property && (
+                {prop.property && <Table.Cell>{prop.property}</Table.Cell>}
+                {prop.type && (
                   <Table.Cell>
                     <Code size="md" variant="surface">
-                      {prop.property}
+                      {prop.type}
                     </Code>
                   </Table.Cell>
                 )}
-                {prop.type && <Table.Cell>{prop.type}</Table.Cell>}
                 {prop.default && (
                   <Table.Cell>
                     <Code size="md" variant="surface">

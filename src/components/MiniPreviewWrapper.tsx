@@ -21,7 +21,7 @@ const MiniPreviewWrapper = ({
 
   return (
     <div
-      className={`${className} relative aspect-video rounded-lg flex items-center justify-center`}
+      className={`relative aspect-video rounded-lg flex items-center justify-center bg-elem-background ${className}`}
     >
       {reloadButton && (
         <Button
@@ -32,7 +32,9 @@ const MiniPreviewWrapper = ({
           <TbReload />
         </Button>
       )}
-      <div key={key}>{children}</div>
+      <div key={key} className="!min-w-full">
+        {children}
+      </div>
     </div>
   );
 };

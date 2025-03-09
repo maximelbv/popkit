@@ -51,12 +51,12 @@ interface MenuItemProps extends ItemData {
 }
 
 const sizeConfig = {
-  xxs: { fontSize: "text-md", padding: "p-2", imgWidth: "w-40" },
-  xs: { fontSize: "text-xl", padding: "p-2", imgWidth: "w-60" },
-  sm: { fontSize: "text-3xl", padding: "p-4", imgWidth: "w-80" },
-  md: { fontSize: "text-5xl", padding: "p-8", imgWidth: "w-100" },
-  lg: { fontSize: "text-7xl", padding: "p-10", imgWidth: "w-120" },
-  xl: { fontSize: "text-8xl", padding: "p-12", imgWidth: "w-140" },
+  xxs: { fontSize: "!text-md", padding: "!p-2", imgWidth: "!w-40" },
+  xs: { fontSize: "!text-xl", padding: "!p-2", imgWidth: "!w-60" },
+  sm: { fontSize: "!text-3xl", padding: "!p-4", imgWidth: "!w-80" },
+  md: { fontSize: "!text-5xl", padding: "!p-8", imgWidth: "!w-100" },
+  lg: { fontSize: "!text-7xl", padding: "!p-0", imgWidth: "!w-28" },
+  xl: { fontSize: "!text-8xl", padding: "!p-12", imgWidth: "!w-140" },
 };
 
 const MenuItem = ({
@@ -78,7 +78,7 @@ const MenuItem = ({
   const textRef = useRef<HTMLSpanElement>(null);
 
   const { fontSize, padding } = sizeConfig[size];
-  const separatorClass = displaySeparators ? "border-b" : "";
+  const separatorClass = displaySeparators ? "!border-b" : "";
 
   const findClosestEdge = useCallback(
     (
@@ -165,7 +165,7 @@ const MenuItem = ({
     <a
       ref={itemRef}
       href={link}
-      className={`relative block group overflow-hidden font-bold !${fontSize} !${padding} ${separatorClass} ${className}`}
+      className={`!relative !block !group !overflow-hidden !font-bold ${fontSize} ${padding} ${separatorClass} !${className}`}
       style={{
         color: textColor,
         background: bgColor,
@@ -176,7 +176,7 @@ const MenuItem = ({
     >
       <span
         ref={textRef}
-        className="relative z-10 transition-colors duration-600"
+        className={`relative z-10 transition-colors duration-600`}
       >
         {text}
       </span>

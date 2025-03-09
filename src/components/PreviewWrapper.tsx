@@ -21,7 +21,7 @@ const PreviewWrapper = ({
 
   return (
     <div
-      className={`${className} relative h-[400px] !border !border-border-default rounded-xl flex items-center justify-center`}
+      className={`${className} relative min-h-[400px] !p-4 !border !border-border-default rounded-xl flex items-center justify-center overflow-hidden`}
     >
       {reloadButton && (
         <Button
@@ -32,7 +32,9 @@ const PreviewWrapper = ({
           <TbReload />
         </Button>
       )}
-      <div key={key}>{children}</div>
+      <div key={key} className="!w-full">
+        {children}
+      </div>
     </div>
   );
 };

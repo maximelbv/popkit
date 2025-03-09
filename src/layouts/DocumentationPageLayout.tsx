@@ -45,16 +45,16 @@ const DocumentationPageLayout = () => {
           <ComponentInstallation installation={installation} />
         </DocumentationElement>
       )}
-      {props && (
-        <DocumentationElement title="Props">
-          <PropsTable props={props} />
-        </DocumentationElement>
-      )}
       {examples && (
         <DocumentationElement title="Examples">
           {examples().map((example, index) => (
             <div key={index}>{example}</div>
           ))}
+        </DocumentationElement>
+      )}
+      {props && (
+        <DocumentationElement title="Props">
+          <PropsTable props={props} />
         </DocumentationElement>
       )}
       {dependencies && dependencies.length > 0 && (

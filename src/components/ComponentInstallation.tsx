@@ -64,9 +64,8 @@ const ComponentInstallation = ({
               <TimelineRoot>
                 {mode.steps.map((step, stepIndex) => (
                   <TimelineItem key={stepIndex}>
-                    {mode.steps.length > 1 && (
-                      <TimelineConnector>{stepIndex + 1}</TimelineConnector>
-                    )}
+                    <TimelineConnector>{stepIndex + 1}</TimelineConnector>
+
                     <TimelineContent className="overflow-hidden">
                       <div className="flex flex-col gap-1">
                         <span className="!font-bold !leading-5">
