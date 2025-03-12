@@ -564,9 +564,9 @@ const examples = () => [
         textColor="blue"
         bgColor="#F0F1FA"
         items={mocks.mock4}
-        size="md"
-        className="max-w-[80%] !m-auto !font-jetbrains [&_.img]:!w-[1500px]"
-        itemClassName="!p-0"
+        size="sm"
+        className="max-w-[80%] !m-auto !font-jetbrains"
+        itemClassName="!p-0 !text-[50px]"
       />
     </MiniPreviewWrapper>
   </div>,
