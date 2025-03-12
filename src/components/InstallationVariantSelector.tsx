@@ -26,28 +26,29 @@ export const InstallationVariantSelector = ({
       ? defaultVariant
       : availableVariants[0];
 
-  const hasTailwindOptions = availableVariants.some((v) =>
-    v.includes("Tailwind")
-  );
-  const initialHasTailwind =
-    hasTailwindOptions && initialVariant.includes("Tailwind");
-  const initialLanguage = initialHasTailwind
-    ? (initialVariant.replace("Tailwind", "") as "js" | "ts")
-    : (initialVariant as "js" | "ts");
-
-  const [language, setLanguage] = useState<"js" | "ts">(initialLanguage);
-  const [hasTailwind, setHasTailwind] = useState<boolean>(initialHasTailwind);
-
-  const availableLanguages = Array.from(
+  const languageOptions = Array.from(
     new Set(
-      availableVariants.map((variant) =>
-        variant.includes("Tailwind") ? variant.replace("Tailwind", "") : variant
+      availableVariants.map((v) =>
+        v.includes("Tailwind") ? v.replace("Tailwind", "") : v
       )
     )
   ) as ("js" | "ts")[];
 
+  const hasTailwindVariants = languageOptions.some((lang) => {
+    return (
+      availableVariants.includes(lang as Variant) &&
+      availableVariants.includes(`${lang}Tailwind` as Variant)
+    );
+  });
+
+  const initialLanguage = initialVariant.replace("Tailwind", "") as "js" | "ts";
+  const initialHasTailwind = initialVariant.includes("Tailwind");
+
+  const [language, setLanguage] = useState<"js" | "ts">(initialLanguage);
+  const [hasTailwind, setHasTailwind] = useState<boolean>(initialHasTailwind);
+
   const languageCollection = createListCollection({
-    items: availableLanguages.map((lang) => ({
+    items: languageOptions.map((lang) => ({
       label: lang.toUpperCase(),
       value: lang,
     })),
@@ -57,10 +58,7 @@ export const InstallationVariantSelector = ({
     lang: "js" | "ts",
     useTailwind: boolean
   ): Variant => {
-    if (useTailwind) {
-      return `${lang}Tailwind` as Variant;
-    }
-    return lang as Variant;
+    return useTailwind ? (`${lang}Tailwind` as Variant) : (lang as Variant);
   };
 
   useEffect(() => {
@@ -81,7 +79,7 @@ export const InstallationVariantSelector = ({
 
   return (
     <div className="flex gap-4 items-center justify-center">
-      {hasTailwindOptions && (
+      {hasTailwindVariants && (
         <div className="flex items-center justify-center gap-2">
           <Switch.Root
             checked={hasTailwind}
