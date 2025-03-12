@@ -528,7 +528,7 @@ const examples = () => [
     <MiniPreviewWrapper className="!bg-[#F26850]">
       <ShowcaseMenuDemo
         items={mocks.mock3}
-        size="lg"
+        size="md"
         textAlignment="center"
         textColor="#F6EBE2"
         bgColor="#F26850"
@@ -555,7 +555,6 @@ const examples = () => [
         textColor="#BADD7F"
         bgColor="#45853B"
         className="!font-darumadrop max-w-[80%] !m-auto"
-        itemClassName="!rounded-md"
         displaySeparators={false}
         displayImages={false}
       />
@@ -565,8 +564,9 @@ const examples = () => [
         textColor="blue"
         bgColor="#F0F1FA"
         items={mocks.mock4}
-        size="lg"
-        className="max-w-[60%] !m-auto !font-jetbrains"
+        size="md"
+        className="max-w-[80%] !m-auto !font-jetbrains [&_.img]:!w-[1500px]"
+        itemClassName="!p-0"
       />
     </MiniPreviewWrapper>
   </div>,

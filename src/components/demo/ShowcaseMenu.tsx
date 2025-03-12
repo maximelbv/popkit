@@ -51,12 +51,12 @@ interface MenuItemProps extends ItemData {
 }
 
 const sizeConfig = {
-  xxs: { fontSize: "!text-md", padding: "!p-2", imgWidth: "!w-40" },
-  xs: { fontSize: "!text-xl", padding: "!p-2", imgWidth: "!w-60" },
-  sm: { fontSize: "!text-3xl", padding: "!p-4", imgWidth: "!w-80" },
-  md: { fontSize: "!text-5xl", padding: "!p-8", imgWidth: "!w-100" },
-  lg: { fontSize: "!text-7xl", padding: "!p-0", imgWidth: "!w-28" },
-  xl: { fontSize: "!text-8xl", padding: "!p-12", imgWidth: "!w-140" },
+  xxs: { fontSize: "16px", padding: "8px", imgWidth: "120px" },
+  xs: { fontSize: "24px", padding: "12px", imgWidth: "180px" },
+  sm: { fontSize: "30px", padding: "16px", imgWidth: "240px" },
+  md: { fontSize: "48px", padding: "18px", imgWidth: "300px" },
+  lg: { fontSize: "72px", padding: "20px", imgWidth: "380px" },
+  xl: { fontSize: "96px", padding: "20px", imgWidth: "500px" },
 };
 
 const MenuItem = ({
@@ -165,11 +165,14 @@ const MenuItem = ({
     <a
       ref={itemRef}
       href={link}
-      className={`!relative !block !group !overflow-hidden !font-bold ${fontSize} ${padding} ${separatorClass} !${className}`}
+      className={`relative block group overflow-hidden ${separatorClass} ${className}`}
       style={{
+        fontWeight: "bold",
         color: textColor,
         background: bgColor,
         borderColor: textColor,
+        fontSize: fontSize,
+        padding: padding,
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -284,6 +287,7 @@ const ShowcaseMenuDemo = ({
                   hoveredImage === item.image ? "opacity-100" : "opacity-0"
                 }`}
                 style={{
+                  width: imgWidth,
                   top: `${position.y + 10}px`,
                   left: `${position.x + 10}px`,
                   backgroundImage: `url(${item.image})`,

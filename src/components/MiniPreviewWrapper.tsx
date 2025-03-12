@@ -21,7 +21,7 @@ const MiniPreviewWrapper = ({
 
   return (
     <div
-      className={`relative aspect-video rounded-lg flex items-center justify-center bg-elem-background ${className}`}
+      className={`relative aspect-video rounded-lg flex items-center justify-center bg-elem-background overflow-hidden ${className}`}
     >
       {reloadButton && (
         <Button
