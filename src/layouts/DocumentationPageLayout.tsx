@@ -1,10 +1,10 @@
 import { Navigate, useParams } from "react-router";
-import PropsTable from "@/components/PropsTable";
-import ComponentOverview from "@/components/ComponentOverview";
-import DocumentationElement from "@/components/DocumentationElement";
-import DependenciesList from "@/components/DependenciesList";
+import PropsTable from "@/components/docs/PropsTable";
+import ComponentOverview from "@/components/docs/ComponentOverview";
+import DocumentationElement from "@/components/docs/DocumentationElement";
+import DependenciesList from "@/components/docs/DependenciesList";
 import { useComponents } from "@/hooks/useComponents";
-import ComponentInstallation from "@/components/ComponentInstallation";
+import ComponentInstallation from "@/components/docs/ComponentInstallation";
 import { DOC_PATH } from "@/constants/paths";
 
 const DocumentationPageLayout = () => {

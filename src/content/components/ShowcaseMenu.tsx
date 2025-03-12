@@ -1,6 +1,6 @@
-import MiniPreviewWrapper from "@/components/MiniPreviewWrapper";
-import PreviewWrapper from "@/components/PreviewWrapper";
-import ShowcaseMenuDemo from "@/components/demo/ShowcaseMenu";
+import MiniPreviewWrapper from "@/components/docs/MiniPreviewWrapper";
+import PreviewWrapper from "@/components/docs/PreviewWrapper";
+import ShowcaseMenuDemo from "@/components/library/ShowcaseMenu";
 import { Categories } from "@/constants/categories";
 import { Status } from "@/constants/status";
 import { ICode, IComponent } from "@/types/components";

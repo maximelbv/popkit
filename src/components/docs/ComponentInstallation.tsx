@@ -7,7 +7,7 @@ import {
   TimelineItem,
   TimelineConnector,
   TimelineContent,
-} from "./ui/timeline";
+} from "@/components/docs/chakra/timeline";
 import { InstallationVariantSelector } from "./InstallationVariantSelector";
 import { getAvailableVariants } from "@/utils/collection-utils";
 

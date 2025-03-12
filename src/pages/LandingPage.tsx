@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Footer from "@/components/docs/Footer";
+import Header from "@/components/docs/Header";
 import { GITHUB_REPO_LINK } from "@/constants/paths";
 import { Button, Image } from "@chakra-ui/react";
 import { FiBook, FiGithub } from "react-icons/fi";

@@ -1,14 +1,14 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
-import { Provider } from "@/components/ui/provider.tsx";
 import "./globals.css";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
 import DocumentationPageLayout from "@/layouts/DocumentationPageLayout";
 import ComponentsProvider from "./Providers/ComponentsProvider";
-import { Toaster } from "@/components/ui/toaster";
-import DocumentationOverview from "./components/DocumentationOverview";
 import { COMPONENTS_PATH, DOC_PATH, OVERVIEW_PATH } from "./constants/paths";
+import { Provider } from "./components/docs/chakra/provider";
+import { Toaster } from "./components/docs/chakra/toaster";
+import DocumentationOverview from "./components/docs/DocumentationOverview";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

@@ -5,7 +5,7 @@ import {
   SelectContent,
   SelectItem,
   SelectValueText,
-} from "@/components/ui/select";
+} from "@/components/docs/chakra/select";
 import { Variant } from "@/types/components";
 import { useState, useEffect } from "react";
 import { RiTailwindCssFill } from "react-icons/ri";

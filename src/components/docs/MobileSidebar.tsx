@@ -5,7 +5,7 @@ import {
   DrawerContent,
   DrawerRoot,
   DrawerTrigger,
-} from "@/components/ui/drawer";
+} from "@/components/docs/chakra/drawer";
 import { RiMenu3Fill } from "react-icons/ri";
 import Sidebar from "./Sidebar";
 import Logo from "./Logo";

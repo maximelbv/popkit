@@ -1,8 +1,8 @@
 import { Outlet, useLocation } from "react-router";
-import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
+import Header from "@/components/docs/Header";
+import Sidebar from "@/components/docs/Sidebar";
 import { Box } from "@chakra-ui/react";
-import Footer from "@/components/Footer";
+import Footer from "@/components/docs/Footer";
 
 const DocumentationLayout = () => {
   const location = useLocation();
