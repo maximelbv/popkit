@@ -18,9 +18,10 @@ const DocumentationOverview = () => {
           <div className="flex flex-col gap-1">
             <span className="!font-bold !text-xl">What is this Project ?</span>
             <span className="text-text-muted">
-              Popkit is a personal library where I store and experiment with UI
-              components, animations, and interactivity, primarily using
-              TypeScript and Tailwind CSS.
+              Popkit is a personal 'copy & paste' library where I store and
+              experiment with UI components, animations, and interactivity,
+              <br />
+              primarily using TypeScript and Tailwind CSS.
               <br />
               <strong className="underline">
                 It’s not designed as a polished, production-ready solution
@@ -31,7 +32,7 @@ const DocumentationOverview = () => {
           <div className="flex flex-col gap-1">
             <span className="!font-bold !text-xl">Can i use it ?</span>
             <span className="text-text-muted">
-              Feel free to use it! While Popkit is primarily for my own use,
+              Feel free to use it ! While Popkit is primarily for my own use,
               you're welcome to explore and integrate any components you find
               useful. <br />
               Just keep in mind that it's not actively maintained for stability
