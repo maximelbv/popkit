@@ -10,8 +10,8 @@ const DocumentationOverview = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-5">
-        <div className="w-full h-[150px] bg-elem-background rounded-lg flex items-center justify-center">
-          <Logo className="scale-225" />
+        <div className="w-full h-[75px] xs:h-[100px] md:h-[150px] bg-elem-background rounded-lg flex items-center justify-center">
+          <Logo className="scale-100 xs:scale-150 md:scale-225" />
         </div>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-1">
@@ -42,7 +42,7 @@ const DocumentationOverview = () => {
       </div>
       <Divider />
       <div className="flex flex-col gap-1">
-        <span className="!font-bold !text-4xl flex gap-2 items-center">
+        <span className="!font-bold !text-2xl xs:!text-3xl md:!text-4xl flex gap-2 items-center">
           <LuBox />
           Components Overview
         </span>
