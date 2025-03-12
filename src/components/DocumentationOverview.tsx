@@ -2,7 +2,7 @@ import { getAllComponents } from "@/utils/file-utils";
 import ComponentCard from "./ComponentCard";
 import { LuBox } from "react-icons/lu";
 import Divider from "./Divider";
-import { LogoSimple } from "./Logo";
+import Logo from "./Logo";
 
 const DocumentationOverview = () => {
   const components = getAllComponents();
@@ -10,10 +10,9 @@ const DocumentationOverview = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-5">
-        <span className="!font-bold !text-4xl flex gap-2 items-center">
-          <LogoSimple />
-          Welcome to Popkit !
-        </span>
+        <div className="w-full h-[150px] bg-elem-background rounded-lg flex items-center justify-center">
+          <Logo className="scale-225" />
+        </div>
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-1">
             <span className="!font-bold !text-xl">What is this Project ?</span>
@@ -22,7 +21,7 @@ const DocumentationOverview = () => {
               experiment with UI components, animations, and interactivity,
               <br />
               primarily using TypeScript and Tailwind CSS.
-              <br />
+              <br /> <br />
               <strong className="underline">
                 It’s not designed as a polished, production-ready solution
               </strong>
