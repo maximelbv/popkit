@@ -9,7 +9,7 @@ const mocks = {
   mock1: [
     {
       link: "#",
-      text: "Div Soup",
+      text: "Datastream",
       image: "https://picsum.photos/1800",
     },
     { link: "#", text: "404 Labs", image: "https://picsum.photos/1700" },
@@ -419,6 +419,7 @@ const overview = {
         size="xs"
         bgColor="#18181b"
         displaySeparators={false}
+        itemClassName="!p-1 !font-semibold"
       />
     </MiniPreviewWrapper>
   ),
@@ -435,7 +436,7 @@ const overview = {
   code: `import ShowcaseMenu from '@/components/ShowcaseMenu'
 
 const previewItems = [
-  { link: "#", text: "Div Soup", image: "https://picsum.photos/1600" },
+  { link: "#", text: "Datastream", image: "https://picsum.photos/1600" },
   { link: "#", text: "404 Labs", image: "https://picsum.photos/1800" },
   { link: "#", text: "Aperture UI", image: "https://picsum.photos/1700" },
   { link: "#", text: "Blackbox", image: "https://picsum.photos/1500" },
@@ -564,9 +565,9 @@ const examples = () => [
         textColor="blue"
         bgColor="#F0F1FA"
         items={mocks.mock4}
-        size="sm"
-        className="max-w-[80%] !m-auto !font-jetbrains"
-        itemClassName="!p-0 !text-[50px]"
+        size="xxs"
+        className="max-w-[90%] !m-auto !font-jetbrains"
+        itemClassName="!p-0 !leading-[1.1] !text-[75px]"
       />
     </MiniPreviewWrapper>
   </div>,
