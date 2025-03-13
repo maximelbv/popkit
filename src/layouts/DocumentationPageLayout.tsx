@@ -6,15 +6,40 @@ import DependenciesList from "@/components/docs/DependenciesList";
 import { useComponents } from "@/hooks/useComponents";
 import ComponentInstallation from "@/components/docs/ComponentInstallation";
 import { DOC_PATH } from "@/constants/paths";
+import { Skeleton } from "@chakra-ui/react";
+
+const DocumentationPageLayoutSkeleton = () => {
+  return (
+    <div className="flex flex-col lg:gap-12 gap-8 !max-w-full">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2 lg:gap-4">
+          <Skeleton height="60px" width="50%" />
+          <div className="flex flex-col gap-1 max-w-[600px]">
+            <Skeleton height="20px" />
+            <Skeleton height="20px" width="80%" />
+          </div>
+        </div>
+        <Skeleton height="400px" />
+        <Skeleton height="400px" />
+        <Skeleton height="400px" />
+      </div>
+    </div>
+  );
+};
 
 const DocumentationPageLayout = () => {
   const { componentName } = useParams();
-  const components = useComponents();
-  const componentData = components.find(
+  const { componentsMeta, loadingMeta } = useComponents();
+
+  if (loadingMeta) return <DocumentationPageLayoutSkeleton />;
+
+  const componentData = componentsMeta.find(
     (comp) => comp.name.toLowerCase().replace(/\s+/g, "-") === componentName
   );
 
-  if (!componentData) return <Navigate to={`/${DOC_PATH}`} replace />;
+  if (!componentData) {
+    return <Navigate to={`/${DOC_PATH}`} replace />;
+  }
 
   const {
     name,

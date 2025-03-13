@@ -54,3 +54,8 @@ code {
 .custom-text-hover-anim {
   @apply transition ease-in-out duration-300;
 }
+
+html {
+  background: var(--color-background);
+  color: var(--color-text-primary);
+}

@@ -4,7 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import "./globals.css";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
 import DocumentationPageLayout from "@/layouts/DocumentationPageLayout";
-import ComponentsProvider from "./Providers/ComponentsProvider";
+import ComponentsProvider from "./providers/ComponentsProvider";
 import { COMPONENTS_PATH, DOC_PATH, OVERVIEW_PATH } from "./constants/paths";
 import { Provider } from "./components/docs/chakra/provider";
 import { Toaster } from "./components/docs/chakra/toaster";

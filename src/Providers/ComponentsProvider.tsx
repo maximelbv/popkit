@@ -1,14 +1,8 @@
-import React from "react";
-import { IComponent } from "@/types/components";
-import { getAllComponents } from "@/utils/file-utils";
-import { ComponentsContext } from "@/hooks/useComponents";
+import { ComponentsContext, useComponents } from "@/hooks/useComponents";
 
-interface ComponentsProviderProps {
-  children: React.ReactNode;
-}
+const ComponentsProvider = ({ children }: { children: React.ReactNode }) => {
+  const components = useComponents();
 
-const ComponentsProvider = ({ children }: ComponentsProviderProps) => {
-  const components: IComponent[] = getAllComponents();
   return (
     <ComponentsContext.Provider value={components}>
       {children}

@@ -10,6 +10,7 @@ import {
 } from "@/components/docs/chakra/timeline";
 import { InstallationVariantSelector } from "./InstallationVariantSelector";
 import { getAvailableVariants } from "@/utils/collection-utils";
+import { useComponents } from "@/hooks/useComponents";
 
 interface IComponentInstallationProps {
   installation: IInstallationMode[];
@@ -18,6 +19,8 @@ interface IComponentInstallationProps {
 const ComponentInstallation = ({
   installation,
 }: IComponentInstallationProps) => {
+  const { componentsCode } = useComponents();
+
   const allAvailableVariants = installation.reduce((acc, mode) => {
     const modeVariants = getAvailableVariants(mode.steps);
     return [...new Set([...acc, ...modeVariants])];
@@ -58,14 +61,24 @@ const ComponentInstallation = ({
           )}
         </div>
 
-        {installation.map((mode, index) => {
-          return (
-            <Tabs.Content value={mode.mode} key={index} className="!pt-1">
-              <TimelineRoot>
-                {mode.steps.map((step, stepIndex) => (
+        {installation.map((mode, index) => (
+          <Tabs.Content value={mode.mode} key={index} className="!pt-1">
+            <TimelineRoot>
+              {mode.steps.map((step, stepIndex) => {
+                let code = "";
+
+                if (typeof step.codeBlock === "string") {
+                  code = step.codeBlock;
+                } else if (typeof step.codeBlock === "object") {
+                  const componentKey = step.codeBlock[
+                    selectedVariant
+                  ] as string;
+                  code = componentsCode[componentKey] || "";
+                }
+
+                return (
                   <TimelineItem key={stepIndex}>
                     <TimelineConnector>{stepIndex + 1}</TimelineConnector>
-
                     <TimelineContent className="overflow-hidden">
                       <div className="flex flex-col gap-1">
                         <span className="!font-bold !leading-5">
@@ -78,19 +91,19 @@ const ComponentInstallation = ({
                         )}
                       </div>
 
-                      {step.codeBlock && (
+                      {code && (
                         <InstallationCodeBlockRenderer
-                          codeBlock={step.codeBlock}
-                          variant={selectedVariant}
+                          variant="tsTailwind"
+                          codeBlock={code}
                         />
                       )}
                     </TimelineContent>
                   </TimelineItem>
-                ))}
-              </TimelineRoot>
-            </Tabs.Content>
-          );
-        })}
+                );
+              })}
+            </TimelineRoot>
+          </Tabs.Content>
+        ))}
       </Tabs.Root>
     </div>
   );

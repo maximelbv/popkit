@@ -13,6 +13,7 @@ export function ColorModeProvider(props: ColorModeProviderProps) {
   return (
     <ThemeProvider
       defaultTheme="dark"
+      forcedTheme="dark"
       attribute="class"
       disableTransitionOnChange
       {...props}

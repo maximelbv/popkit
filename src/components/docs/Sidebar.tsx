@@ -7,15 +7,15 @@ import {
 import { useComponents } from "@/hooks/useComponents";
 import { Link, NavLink, useLocation } from "react-router";
 import SidebarTag from "./SidebarTag";
-import { Box, Button, Stack } from "@chakra-ui/react";
+import { Box, Button, Skeleton, Stack } from "@chakra-ui/react";
 
 interface ISidebarProps {
   className?: string;
 }
 
 const Sidebar = ({ className }: ISidebarProps) => {
-  const components = useComponents();
-  const categories = groupComponentsByCategory(components);
+  const { componentsMeta, loadingMeta } = useComponents();
+  const categories = groupComponentsByCategory(componentsMeta);
 
   return (
     <Box className="!w-[250px] !ml-4 !mt-4">
@@ -30,7 +30,12 @@ const Sidebar = ({ className }: ISidebarProps) => {
           </Button>
         </NavLink>
         {Object.entries(categories).map(([category, elements]) => (
-          <Category key={category} name={category} elements={elements} />
+          <Category
+            key={category}
+            name={category}
+            elements={elements}
+            isLoading={loadingMeta}
+          />
         ))}
       </Box>
     </Box>
@@ -40,10 +45,14 @@ const Sidebar = ({ className }: ISidebarProps) => {
 interface CategoryProps {
   name: string;
   elements: GroupedComponent[];
+  isLoading: boolean;
 }
 
-const Category = ({ name, elements }: CategoryProps) => {
+const Category = ({ name, elements, isLoading }: CategoryProps) => {
   const location = useLocation();
+
+  if (isLoading) return <Skeleton marginTop="5px" height="400px" />;
+
   return (
     <Box className="flex flex-col">
       {name && <span className="!text-[18px] !font-bold !py-4">{name}</span>}
