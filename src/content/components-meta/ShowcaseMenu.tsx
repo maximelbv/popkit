@@ -1,6 +1,6 @@
 import MiniPreviewWrapper from "@/components/docs/MiniPreviewWrapper";
 import PreviewWrapper from "@/components/docs/PreviewWrapper";
-import ShowcaseMenuDemo from "@/components/library/ShowcaseMenu";
+import ShowcaseMenu from "@/components/library/ShowcaseMenu";
 import { Categories } from "@/constants/categories";
 import { Status } from "@/constants/status";
 import { IComponent } from "@/types/components";
@@ -117,7 +117,7 @@ export default function MyComponent() {
 const overview = {
   miniPreview: () => (
     <MiniPreviewWrapper>
-      <ShowcaseMenuDemo
+      <ShowcaseMenu
         items={mocks.mock1}
         size="xs"
         bgColor="#18181b"
@@ -128,7 +128,7 @@ const overview = {
   ),
   preview: () => (
     <PreviewWrapper>
-      <ShowcaseMenuDemo
+      <ShowcaseMenu
         items={mocks.mock1}
         size="sm"
         className="max-w-[800px] !m-auto"
@@ -230,7 +230,7 @@ const props = [
 const examples = () => [
   <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
     <MiniPreviewWrapper className="!bg-[#F26850]">
-      <ShowcaseMenuDemo
+      <ShowcaseMenu
         items={mocks.mock3}
         size="md"
         textAlignment="center"
@@ -243,7 +243,7 @@ const examples = () => [
       />
     </MiniPreviewWrapper>
     <MiniPreviewWrapper className="!border !border-border-default">
-      <ShowcaseMenuDemo
+      <ShowcaseMenu
         items={mocks.mock5}
         size="xxs"
         className="max-w-[80%] !m-auto"
@@ -252,7 +252,7 @@ const examples = () => [
       />
     </MiniPreviewWrapper>
     <MiniPreviewWrapper className="!bg-[#45853B]">
-      <ShowcaseMenuDemo
+      <ShowcaseMenu
         items={mocks.mock2}
         size="sm"
         textAlignment="center"
@@ -264,7 +264,7 @@ const examples = () => [
       />
     </MiniPreviewWrapper>
     <MiniPreviewWrapper className="!bg-[#F0F1FA]">
-      <ShowcaseMenuDemo
+      <ShowcaseMenu
         textColor="blue"
         bgColor="#F0F1FA"
         items={mocks.mock4}

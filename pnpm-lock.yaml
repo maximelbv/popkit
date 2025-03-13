@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@chakra-ui/icons':
-        specifier: 2.2.4
+        specifier: ^2.2.4
         version: 2.2.4(@chakra-ui/react@3.8.0(@emotion/react@11.14.0(@types/react@19.0.8)(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
       '@chakra-ui/react':
         specifier: 3.8.0
@@ -18,7 +18,7 @@ importers:
         specifier: 11.14.0
         version: 11.14.0(@types/react@19.0.8)(react@19.0.0)
       '@tailwindcss/vite':
-        specifier: 4.0.6
+        specifier: ^4.0.6
         version: 4.0.6(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.2))
       next-themes:
         specifier: 0.4.4
@@ -33,14 +33,14 @@ importers:
         specifier: 5.4.0
         version: 5.4.0(react@19.0.0)
       react-router:
-        specifier: 7.1.5
+        specifier: ^7.1.5
         version: 7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react-syntax-highlighter:
-        specifier: 15.6.1
+        specifier: ^15.6.1
         version: 15.6.1(react@19.0.0)
       tailwindcss:
-        specifier: 4.0.6
-        version: 4.0.6
+        specifier: ^4.0.6
+        version: 4.0.13
     devDependencies:
       '@eslint/js':
         specifier: 9.19.0
@@ -55,7 +55,7 @@ importers:
         specifier: 19.0.3
         version: 19.0.3(@types/react@19.0.8)
       '@types/react-syntax-highlighter':
-        specifier: 15.5.13
+        specifier: ^15.5.13
         version: 15.5.13
       '@vitejs/plugin-react-swc':
         specifier: 3.5.0

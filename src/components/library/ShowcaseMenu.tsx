@@ -195,7 +195,7 @@ const MenuItem = ({
   );
 };
 
-const ShowcaseMenuDemo = ({
+const ShowcaseMenu = ({
   items = [],
   textAlignment = "left",
   textColor = "white",
@@ -299,4 +299,4 @@ const ShowcaseMenuDemo = ({
   );
 };
 
-export default ShowcaseMenuDemo;
+export default ShowcaseMenu;
