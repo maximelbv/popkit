@@ -73,7 +73,7 @@ const ComponentInstallation = ({
                   const componentKey = step.codeBlock[
                     selectedVariant
                   ] as string;
-                  code = componentsCode[componentKey] || "";
+                  code = componentsCode[componentKey] || componentKey;
                 }
 
                 return (
