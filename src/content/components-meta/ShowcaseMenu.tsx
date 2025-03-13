@@ -276,7 +276,7 @@ const examples = () => [
   </div>,
 ];
 
-const ShowcaseMenu: IComponent = {
+const ShowcaseMenuMeta: IComponent = {
   name: "Showcase Menu",
   description:
     "A customizable navigation menu with interactive hover effects and optional image previews, featuring adjustable styles and animations.",
@@ -289,4 +289,4 @@ const ShowcaseMenu: IComponent = {
   dependencies: [],
 };
 
-export default ShowcaseMenu;
+export default ShowcaseMenuMeta;
