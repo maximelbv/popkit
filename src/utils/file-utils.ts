@@ -1,7 +1,7 @@
 import { IComponent } from "@/types/components";
 
 export const getAllComponentsMeta = (): IComponent[] => {
-  const modules = import.meta.glob("/src/content/components/**/*.tsx", {
+  const modules = import.meta.glob("/src/content/components-meta/**/*.tsx", {
     eager: true,
     import: "default",
   });
