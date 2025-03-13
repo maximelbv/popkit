@@ -7,6 +7,7 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { FiCopy } from "react-icons/fi";
 import { HiOutlineDocument } from "react-icons/hi";
 import { NavLink } from "react-router";
+import { useComponents } from "@/hooks/useComponents";
 
 interface IComponentCardProps {
   component: IComponent;
@@ -14,18 +15,23 @@ interface IComponentCardProps {
 
 const ComponentCard = ({ component }: IComponentCardProps) => {
   const { name, description, category, overview } = component;
+  const { componentsCode } = useComponents();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     try {
       if (!navigator.clipboard) {
-        console.error("Clipboard API not suported");
+        console.error("Clipboard API not supported");
         return;
       }
       if (!overview.quickCopyCode) {
         return;
       }
-      await navigator.clipboard.writeText(overview.quickCopyCode);
+
+      const componentKey = overview.quickCopyCode;
+      const codeToCopy = componentsCode[componentKey] || componentKey;
+
+      await navigator.clipboard.writeText(codeToCopy);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch (error) {
