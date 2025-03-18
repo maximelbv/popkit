@@ -5,12 +5,21 @@ import { Categories } from "@/constants/categories";
 import { Status } from "@/constants/status";
 import { IComponent } from "@/types/components";
 
-const mocks = [
-  "/mocks/images/mediteranean/1.jpg",
-  "/mocks/images/mediteranean/2.jpg",
-  "/mocks/images/mediteranean/3.jpg",
-  "/mocks/images/mediteranean/4.jpg",
-];
+const mocks = {
+  preview: [
+    "/mocks/images/mediteranean/1.jpg",
+    "/mocks/images/mediteranean/2.jpg",
+    "/mocks/images/mediteranean/3.jpg",
+    "/mocks/images/mediteranean/4.jpg",
+  ],
+  cards: [
+    "/mocks/images/cards/clubs_7.png",
+    "/mocks/images/cards/diamonds_A.png",
+    "/mocks/images/cards/hearts_2.png",
+    "/mocks/images/cards/hearts_Q.png",
+    "/mocks/images/cards/spades_A.png",
+  ],
+};
 
 const manualInstallation = {
   mode: "manual",
@@ -61,7 +70,7 @@ const overview = {
   miniPreview: () => (
     <MiniPreviewWrapper reloadButton={true}>
       <BounceCards
-        images={mocks}
+        images={mocks.preview}
         imgWidth="75px"
         imgHeight="75px"
         spacing={-10}
@@ -71,7 +80,10 @@ const overview = {
   ),
   preview: () => (
     <PreviewWrapper reloadButton={true}>
-      <BounceCards images={mocks} itemClassName="!border-4 !border-white" />
+      <BounceCards
+        images={mocks.preview}
+        itemClassName="!border-4 !border-white"
+      />
     </PreviewWrapper>
   ),
   code: `import BounceCards from '@/components/BounceCards'
@@ -148,7 +160,29 @@ const props = [
   },
 ];
 
-// const examples = () => [];
+const examples = () => [
+  <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+    <MiniPreviewWrapper className="!bg-[#F0F1FA]">
+      <BounceCards
+        images={mocks.cards}
+        imgWidth="135px"
+        imgHeight="189px"
+        rotations={[-20, -10, 1, 10, 20]}
+        itemClassName="shadow-md first:!mt-[20px] last:!mt-[20px] [&:nth-child(3)]:!mt-[-10px] hover:!translate-y-[-20px] transition-all"
+      />
+    </MiniPreviewWrapper>
+    <MiniPreviewWrapper>
+      <BounceCards
+        images={mocks.preview}
+        imgWidth="300px"
+        imgHeight="230px"
+        // rotations={[18, -10, 20, 4]}
+        spacing={-300}
+        delay={0.5}
+      />
+    </MiniPreviewWrapper>
+  </div>,
+];
 
 const BounceMenuMeta: IComponent = {
   name: "Bounce Cards",
@@ -158,7 +192,7 @@ const BounceMenuMeta: IComponent = {
   status: Status.NEW,
   overview: overview,
   installation: [manualInstallation],
-  // examples: examples,
+  examples: examples,
   props: props,
   dependencies: [
     {
