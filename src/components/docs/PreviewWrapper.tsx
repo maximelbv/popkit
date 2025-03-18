@@ -32,7 +32,7 @@ const PreviewWrapper = ({
           <TbReload />
         </Button>
       )}
-      <div key={key} className="!w-full">
+      <div key={key} className="!w-full flex items-center justify-center">
         {children}
       </div>
     </div>

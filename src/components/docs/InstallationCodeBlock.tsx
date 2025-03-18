@@ -13,11 +13,9 @@ const InstallationCodeBlockRenderer = ({
   variant,
 }: IInstallationCodeBlockRendererProps) => {
   if (!codeBlock) return null;
-
   if (typeof codeBlock === "string") {
     return <CodeBlock code={codeBlock} />;
   }
-
   if (isICode(codeBlock)) {
     const codeToShow = codeBlock[variant];
     if (!codeToShow) {
@@ -37,13 +35,10 @@ const InstallationCodeBlockRenderer = ({
     }
     return <CodeBlock code={codeToShow} />;
   }
-
   const entries = Object.entries(codeBlock);
   if (!entries || entries.length === 0) return null;
-
   const defaultTab = entries[0]?.[0] || "";
   if (!defaultTab) return null;
-
   return (
     <Tabs.Root defaultValue={defaultTab} variant="outline" size="sm">
       <Tabs.List className="before:!hidden">
@@ -56,7 +51,6 @@ const InstallationCodeBlockRenderer = ({
       </Tabs.List>
       {entries.map(([key, value]) => {
         if (value === undefined || value === null) return null;
-
         return (
           <Tabs.Content className="!pt-0 !mt-0" value={key} key={key}>
             {typeof value === "string" ? (
@@ -90,7 +84,6 @@ function VariantCodeBlock({
   variant: Variant;
 }) {
   if (!code) return null;
-
   const codeToShow = code[variant];
   if (!codeToShow) {
     return (
@@ -107,7 +100,6 @@ function VariantCodeBlock({
       </Alert.Root>
     );
   }
-
   return <CodeBlock code={codeToShow} />;
 }
 

@@ -2,7 +2,6 @@ import MiniPreviewWrapper from "@/components/docs/MiniPreviewWrapper";
 import PreviewWrapper from "@/components/docs/PreviewWrapper";
 import ShowcaseMenu from "@/components/library/ShowcaseMenu";
 import { Categories } from "@/constants/categories";
-import { Status } from "@/constants/status";
 import { IComponent } from "@/types/components";
 
 const mocks = {
@@ -123,6 +122,7 @@ const overview = {
         size="xs"
         bgColor="#18181b"
         displaySeparators={false}
+        className="w-full !m-auto"
         itemClassName="!p-1 !font-semibold"
       />
     </MiniPreviewWrapper>
@@ -132,7 +132,7 @@ const overview = {
       <ShowcaseMenu
         items={mocks.mock1}
         size="sm"
-        className="max-w-[800px] !m-auto"
+        className="w-[80%] !m-auto"
         bgColor="#050608"
       />
     </PreviewWrapper>
@@ -281,8 +281,7 @@ const ShowcaseMenuMeta: IComponent = {
   name: "Showcase Menu",
   description:
     "A customizable navigation menu with interactive hover effects and optional image previews, featuring adjustable styles and animations.",
-  category: Categories.MENUS,
-  status: Status.NEW,
+  category: Categories.NAVIGATION,
   overview: overview,
   installation: [manualInstallation],
   examples: examples,
