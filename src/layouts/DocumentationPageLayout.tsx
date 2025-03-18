@@ -49,6 +49,7 @@ const DocumentationPageLayout = () => {
     props,
     dependencies,
     examples,
+    info,
   } = componentData;
 
   return (
@@ -61,6 +62,7 @@ const DocumentationPageLayout = () => {
           {description && (
             <p className="text-text-muted !max-w-[600px]">{description}</p>
           )}
+          {info && info()}
         </div>
         <ComponentOverview overview={overview} />
       </div>

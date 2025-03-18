@@ -51,6 +51,7 @@ export interface IComponent {
   overview: IOverview;
   installation?: IInstallationMode[];
   examples?: () => JSX.Element[];
+  info?: () => JSX.Element;
   props?: IProp[];
   dependencies?: IDependency[];
 }

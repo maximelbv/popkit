@@ -118,6 +118,7 @@ const overview = {
   miniPreview: () => (
     <MiniPreviewWrapper>
       <ShowcaseMenu
+        textAlignment="center"
         items={mocks.mock1}
         size="xs"
         bgColor="#18181b"
