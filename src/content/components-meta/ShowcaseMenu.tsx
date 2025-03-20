@@ -237,7 +237,7 @@ const examples = () => [
         textAlignment="center"
         textColor="#F6EBE2"
         bgColor="#F26850"
-        className="max-w-[80%] !m-auto"
+        className="min-w-[80%] !m-auto"
         itemClassName="!rounded-md"
         displaySeparators={false}
         displayImages={false}
@@ -247,7 +247,7 @@ const examples = () => [
       <ShowcaseMenu
         items={mocks.mock5}
         size="xxs"
-        className="max-w-[80%] !m-auto"
+        className="min-w-[80%] !m-auto"
         bgColor="#18181b"
         backgroundAnimation={false}
       />
@@ -259,7 +259,7 @@ const examples = () => [
         textAlignment="center"
         textColor="#BADD7F"
         bgColor="#45853B"
-        className="!font-darumadrop max-w-[80%] !m-auto"
+        className="!font-darumadrop min-w-[80%] !m-auto"
         displaySeparators={false}
         displayImages={false}
       />
@@ -270,7 +270,7 @@ const examples = () => [
         bgColor="#F0F1FA"
         items={mocks.mock4}
         size="xxs"
-        className="max-w-[90%] !m-auto !font-jetbrains"
+        className="min-w-[90%] !m-auto !font-jetbrains"
         itemClassName="!p-0 !leading-[1.1] !text-[75px]"
       />
     </MiniPreviewWrapper>

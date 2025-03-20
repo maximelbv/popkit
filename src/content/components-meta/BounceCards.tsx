@@ -162,7 +162,7 @@ const props = [
 
 const examples = () => [
   <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-    <MiniPreviewWrapper className="!bg-[#F0F1FA]">
+    <MiniPreviewWrapper className="!bg-[#F0F1FA]" reloadButton={true}>
       <BounceCards
         images={mocks.cards}
         imgWidth="135px"
@@ -171,7 +171,7 @@ const examples = () => [
         itemClassName="shadow-md first:!mt-[20px] last:!mt-[20px] [&:nth-child(3)]:!mt-[-10px] hover:!translate-y-[-20px] transition-all"
       />
     </MiniPreviewWrapper>
-    <MiniPreviewWrapper>
+    <MiniPreviewWrapper reloadButton={true}>
       <BounceCards
         images={mocks.preview}
         imgWidth="300px"
