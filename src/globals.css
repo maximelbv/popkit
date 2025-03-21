@@ -24,9 +24,11 @@
 @theme {
   --color-background: #050608;
   --color-elem-background: #18181b;
+  --color-elem-elem-background: #242429;
   --color-text-primary: #fff;
   --color-text-muted: #a1a1aa;
   --color-border-default: #27272a;
+  --color-border-light: #3b3b40;
 
   --spacing-layout-max-w: 1440px;
 

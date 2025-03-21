@@ -9,12 +9,14 @@ import { COMPONENTS_PATH, DOC_PATH, OVERVIEW_PATH } from "./constants/paths";
 import { Provider } from "./components/docs/chakra/provider";
 import { Toaster } from "./components/docs/chakra/toaster";
 import DocumentationOverview from "./components/docs/DocumentationOverview";
+import ScrollToTop from "./utils/scroll-to-top";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider>
       <ComponentsProvider>
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route
               path="*"

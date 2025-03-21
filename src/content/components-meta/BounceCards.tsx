@@ -2,7 +2,6 @@ import MiniPreviewWrapper from "@/components/docs/MiniPreviewWrapper";
 import PreviewWrapper from "@/components/docs/PreviewWrapper";
 import BounceCards from "@/components/library/BounceCards";
 import { Categories } from "@/constants/categories";
-import { Status } from "@/constants/status";
 import { IComponent } from "@/types/components";
 
 const mocks = {
@@ -189,7 +188,6 @@ const BounceMenuMeta: IComponent = {
   description:
     "A component that displays a set of animated image cards with customizable spacing, rotations, and smooth spring-based transitions using Framer Motion.",
   category: Categories.ANIMATIONS,
-  status: Status.NEW,
   overview: overview,
   installation: [manualInstallation],
   examples: examples,
