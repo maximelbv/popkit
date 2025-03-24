@@ -70,8 +70,8 @@ const overview = {
     <MiniPreviewWrapper reloadButton={true}>
       <BounceCards
         images={mocks.preview}
-        imgWidth="75px"
-        imgHeight="75px"
+        imgWidth="100px"
+        imgHeight="100px"
         spacing={-10}
         itemClassName="!border-2 !border-white"
       />
