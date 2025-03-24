@@ -3,7 +3,6 @@ import MiniPreviewWrapper from "@/components/docs/MiniPreviewWrapper";
 import PreviewWrapper from "@/components/docs/PreviewWrapper";
 import LightBeamContainer from "@/components/library/LightBeamContainer";
 import { Categories } from "@/constants/categories";
-import { Status } from "@/constants/status";
 import { IComponent } from "@/types/components";
 import { Button } from "@chakra-ui/react";
 
@@ -107,7 +106,6 @@ const LightBeamContainerMeta: IComponent = {
   description:
     "A container component with a dynamic spotlight effect that follows the cursor.",
   category: Categories.ANIMATIONS,
-  status: Status.NEW,
   overview: overview,
   installation: [manualInstallation],
   props: props,
