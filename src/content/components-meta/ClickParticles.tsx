@@ -70,6 +70,11 @@ const overview = {
       <ClickParticles
         particleCount={25}
         particleSize={4}
+        particleColor="#70ABFF"
+        scaleFrom={1}
+        scaleTo={5}
+        distanceMin={200}
+        distanceMax={200}
         shape="circle"
         duration={1}
         className="w-full h-[400px] flex items-center justify-center select-none"

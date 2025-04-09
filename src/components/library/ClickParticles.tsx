@@ -11,6 +11,13 @@ type ClickParticlesProps = {
   shape?: "circle" | "square";
   className?: string;
   children?: React.ReactNode;
+  particleOpacity?: number;
+  scaleFrom?: number;
+  scaleTo?: number;
+  distanceMin?: number;
+  distanceMax?: number;
+  zIndex?: number;
+  containerStyle?: React.CSSProperties;
 };
 
 export const ClickParticles: React.FC<ClickParticlesProps> = ({
@@ -23,6 +30,13 @@ export const ClickParticles: React.FC<ClickParticlesProps> = ({
   shape = "circle",
   className,
   children,
+  particleOpacity = 1,
+  scaleFrom = 1,
+  scaleTo = 0.5,
+  distanceMin = 30,
+  distanceMax = 70,
+  zIndex = 1,
+  containerStyle = {},
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const particlePool = useRef<HTMLSpanElement[]>([]);
@@ -42,6 +56,7 @@ export const ClickParticles: React.FC<ClickParticlesProps> = ({
         pointerEvents: "none",
         transform: "translate(-50%, -50%)",
         opacity: "0",
+        zIndex: zIndex.toString(),
       });
       pool.push(span);
     }
@@ -55,7 +70,7 @@ export const ClickParticles: React.FC<ClickParticlesProps> = ({
     return () => {
       pool.forEach((el) => el.remove());
     };
-  }, [particleColor, particleSize, shape]);
+  }, [particleColor, particleSize, shape, zIndex]);
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -70,7 +85,8 @@ export const ClickParticles: React.FC<ClickParticlesProps> = ({
 
       for (let i = 0; i < particleCount; i++) {
         const angle = baseAngle - halfSpread + Math.random() * spread;
-        const distance = 30 + Math.random() * 40;
+        const distance =
+          distanceMin + Math.random() * (distanceMax - distanceMin);
         const rad = (angle * Math.PI) / 180;
         const dx = Math.cos(rad) * distance;
         const dy = Math.sin(rad) * distance;
@@ -83,36 +99,44 @@ export const ClickParticles: React.FC<ClickParticlesProps> = ({
         Object.assign(particle.style, {
           left: `${x}px`,
           top: `${y}px`,
-          opacity: "1",
+          opacity: particleOpacity.toString(),
         });
 
         gsap.set(particle, {
           x: 0,
           y: 0,
-          scale: 1,
+          scale: scaleFrom,
         });
 
         gsap.to(particle, {
           x: dx,
           y: dy,
           opacity: 0,
-          scale: 0.5,
+          scale: scaleTo,
           duration,
           ease,
         });
       }
     },
-    [duration, ease, particleCount, spread]
+    [
+      duration,
+      ease,
+      particleCount,
+      spread,
+      particleOpacity,
+      scaleFrom,
+      scaleTo,
+      distanceMin,
+      distanceMax,
+    ]
   );
 
   return (
     <div
       ref={containerRef}
       onClick={handleClick}
-      style={{
-        position: "relative",
-      }}
-      className={`${className}`}
+      style={{ position: "relative", ...containerStyle }}
+      className={className}
     >
       {children}
     </div>
