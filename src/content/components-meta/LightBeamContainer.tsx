@@ -105,7 +105,7 @@ const LightBeamContainerMeta: IComponent = {
   name: "Light Beam Container",
   description:
     "A container component with a dynamic spotlight effect that follows the cursor.",
-  category: Categories.ANIMATIONS,
+  category: Categories.EVENT_EFFECTS,
   overview: overview,
   installation: [manualInstallation],
   props: props,
