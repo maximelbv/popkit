@@ -68,14 +68,14 @@ const overview = {
   preview: () => (
     <PreviewWrapper>
       <ClickParticles
-        particleCount={25}
-        particleSize={4}
-        particleColor="#70ABFF"
+        particleCount={20}
+        particleSize={2}
+        // particleColor={["#ff6161", "#61bbff"]}
         scaleFrom={1}
         scaleTo={5}
-        distanceMin={200}
-        distanceMax={200}
-        shape="circle"
+        distanceMin={80}
+        distanceMax={150}
+        shape="square"
         duration={1}
         className="w-full h-[400px] flex items-center justify-center select-none"
       >

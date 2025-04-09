@@ -1,14 +1,14 @@
-import React, { useRef, useCallback, useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 
 type ClickParticlesProps = {
   particleCount?: number;
   particleSize?: number;
-  particleColor?: string;
+  particleColor?: string | string[];
   duration?: number;
   spread?: number;
   ease?: string;
-  shape?: "circle" | "square";
+  shape?: "circle" | "square" | "confetti";
   className?: string;
   children?: React.ReactNode;
   particleOpacity?: number;
@@ -39,47 +39,53 @@ export const ClickParticles: React.FC<ClickParticlesProps> = ({
   containerStyle = {},
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const particlePool = useRef<HTMLSpanElement[]>([]);
   const particleIndex = useRef(0);
+  const particlePool = useRef<HTMLSpanElement[]>([]);
+
+  const getRandomColor = useCallback(() => {
+    if (Array.isArray(particleColor)) {
+      const i = Math.floor(Math.random() * particleColor.length);
+      return particleColor[i];
+    }
+    return particleColor;
+  }, [particleColor]);
+
+  const createParticleStyle = useCallback((): Partial<CSSStyleDeclaration> => {
+    const isConfetti = shape === "confetti";
+    return {
+      position: "absolute",
+      width: `${isConfetti ? particleSize * 1.5 : particleSize}px`,
+      height: `${isConfetti ? particleSize * 0.4 : particleSize}px`,
+      backgroundColor: getRandomColor(),
+      borderRadius:
+        shape === "circle" ? "50%" : shape === "square" ? "0%" : "2px",
+      pointerEvents: "none",
+      transform: `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`,
+      opacity: "0",
+      zIndex: zIndex.toString(),
+    };
+  }, [particleSize, shape, getRandomColor, zIndex]);
 
   useEffect(() => {
-    const pool: HTMLSpanElement[] = [];
+    const container = containerRef.current;
+    if (!container) return;
 
-    for (let i = 0; i < 100; i++) {
+    const pool: HTMLSpanElement[] = Array.from({ length: 100 }, () => {
       const span = document.createElement("span");
-      Object.assign(span.style, {
-        position: "absolute",
-        width: `${particleSize}px`,
-        height: `${particleSize}px`,
-        backgroundColor: particleColor,
-        borderRadius: shape === "circle" ? "50%" : "0%",
-        pointerEvents: "none",
-        transform: "translate(-50%, -50%)",
-        opacity: "0",
-        zIndex: zIndex.toString(),
-      });
-      pool.push(span);
-    }
+      Object.assign(span.style, createParticleStyle());
+      container.appendChild(span);
+      return span;
+    });
 
     particlePool.current = pool;
-    const container = containerRef.current;
-    if (container) {
-      pool.forEach((el) => container.appendChild(el));
-    }
 
     return () => {
       pool.forEach((el) => el.remove());
     };
-  }, [particleColor, particleSize, shape, zIndex]);
+  }, [createParticleStyle]);
 
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+  const animateParticles = useCallback(
+    (x: number, y: number) => {
       const baseAngle = Math.random() * 360;
       const halfSpread = spread / 2;
 
@@ -95,19 +101,13 @@ export const ClickParticles: React.FC<ClickParticlesProps> = ({
         particleIndex.current =
           (particleIndex.current + 1) % particlePool.current.length;
 
+        particle.style.backgroundColor = getRandomColor();
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.opacity = particleOpacity.toString();
+
         gsap.killTweensOf(particle);
-        Object.assign(particle.style, {
-          left: `${x}px`,
-          top: `${y}px`,
-          opacity: particleOpacity.toString(),
-        });
-
-        gsap.set(particle, {
-          x: 0,
-          y: 0,
-          scale: scaleFrom,
-        });
-
+        gsap.set(particle, { x: 0, y: 0, scale: scaleFrom });
         gsap.to(particle, {
           x: dx,
           y: dy,
@@ -128,7 +128,18 @@ export const ClickParticles: React.FC<ClickParticlesProps> = ({
       scaleTo,
       distanceMin,
       distanceMax,
+      getRandomColor,
     ]
+  );
+
+  const handleClick = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      const container = containerRef.current;
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      animateParticles(e.clientX - rect.left, e.clientY - rect.top);
+    },
+    [animateParticles]
   );
 
   return (
