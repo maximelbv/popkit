@@ -1,4 +1,4 @@
-![Popkit Logo](./public/landing-logo.svg)
+![Popkit Logo](./public/logo.svg)
 
 # Popkit - **Elegant UI Components for React**
 
