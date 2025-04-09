@@ -1,6 +1,17 @@
 import React, { useRef, useEffect, useCallback } from "react";
 import gsap from "gsap";
 
+type ParticleShape =
+  | "circle"
+  | "square"
+  | "confetti"
+  | "shard"
+  | "streak"
+  | "ring"
+  | "starburst"
+  | "smokey"
+  | "leaf";
+
 type ClickParticlesProps = {
   particleCount?: number;
   particleSize?: number;
@@ -8,7 +19,7 @@ type ClickParticlesProps = {
   duration?: number;
   spread?: number;
   ease?: string;
-  shape?: "circle" | "square" | "confetti";
+  shape?: ParticleShape;
   className?: string;
   children?: React.ReactNode;
   particleOpacity?: number;
@@ -51,19 +62,86 @@ export const ClickParticles: React.FC<ClickParticlesProps> = ({
   }, [particleColor]);
 
   const createParticleStyle = useCallback((): Partial<CSSStyleDeclaration> => {
-    const isConfetti = shape === "confetti";
-    return {
+    const baseStyle: Partial<CSSStyleDeclaration> = {
       position: "absolute",
-      width: `${isConfetti ? particleSize * 1.5 : particleSize}px`,
-      height: `${isConfetti ? particleSize * 0.4 : particleSize}px`,
-      backgroundColor: getRandomColor(),
-      borderRadius:
-        shape === "circle" ? "50%" : shape === "square" ? "0%" : "2px",
       pointerEvents: "none",
       transform: `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`,
       opacity: "0",
       zIndex: zIndex.toString(),
     };
+
+    switch (shape) {
+      case "circle":
+        return {
+          ...baseStyle,
+          width: `${particleSize}px`,
+          height: `${particleSize}px`,
+          backgroundColor: getRandomColor(),
+          borderRadius: "50%",
+        };
+      case "square":
+        return {
+          ...baseStyle,
+          width: `${particleSize}px`,
+          height: `${particleSize}px`,
+          backgroundColor: getRandomColor(),
+          borderRadius: "0%",
+        };
+      case "confetti":
+        return {
+          ...baseStyle,
+          width: `${particleSize * 1.5}px`,
+          height: `${particleSize * 0.4}px`,
+          backgroundColor: getRandomColor(),
+          borderRadius: "2px",
+        };
+      case "shard":
+        return {
+          ...baseStyle,
+          width: `${particleSize * 0.4}px`,
+          height: `${particleSize * 1.6}px`,
+          backgroundColor: getRandomColor(),
+          borderRadius: "0%",
+          clipPath: "polygon(0 0, 100% 50%, 0 100%)",
+        };
+      case "streak":
+        return {
+          ...baseStyle,
+          width: `${particleSize * 0.2}px`,
+          height: `${particleSize * 2}px`,
+          backgroundColor: getRandomColor(),
+          borderRadius: "0%",
+        };
+      case "leaf":
+        return {
+          ...baseStyle,
+          width: `${particleSize}px`,
+          height: `${particleSize * 0.6}px`,
+          backgroundColor: getRandomColor(),
+          borderRadius: "100% 0%",
+          transform: `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`,
+        };
+      case "starburst":
+        return {
+          ...baseStyle,
+          width: `${particleSize}px`,
+          height: `${particleSize}px`,
+          backgroundColor: getRandomColor(),
+          clipPath:
+            "polygon(50% 0%, 60% 35%, 100% 35%, 68% 57%, 78% 100%, 50% 75%, 22% 100%, 32% 57%, 0% 35%, 40% 35%)",
+        };
+      case "smokey":
+        return {
+          ...baseStyle,
+          width: `${particleSize}px`,
+          height: `${particleSize}px`,
+          backgroundColor: getRandomColor(),
+          borderRadius: "50%",
+          filter: "blur(4px)",
+        };
+      default:
+        return baseStyle;
+    }
   }, [particleSize, shape, getRandomColor, zIndex]);
 
   useEffect(() => {

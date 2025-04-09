@@ -3,7 +3,6 @@ import PreviewWrapper from "@/components/docs/PreviewWrapper";
 import LightBeamContainer from "@/components/library/LightBeamContainer";
 import TiltCard from "@/components/library/TiltCard";
 import { Categories } from "@/constants/categories";
-import { Status } from "@/constants/status";
 import { IComponent } from "@/types/components";
 import { Image } from "@chakra-ui/react";
 
@@ -146,7 +145,6 @@ const TiltCardMeta: IComponent = {
   description:
     "A component that applies a 3D tilt effect, dynamically adjusting its rotation based on cursor movement within a defined radius.",
   category: Categories.EVENT_EFFECTS,
-  status: Status.NEW,
   overview: overview,
   installation: [manualInstallation],
   examples: examples,
