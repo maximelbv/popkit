@@ -10,9 +10,11 @@ import { Provider } from "./components/docs/chakra/provider";
 import { Toaster } from "./components/docs/chakra/toaster";
 import DocumentationOverview from "./components/docs/DocumentationOverview";
 import ScrollToTop from "./utils/scroll-to-top";
+import { Analytics } from "@vercel/analytics/react";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <Analytics />
     <Provider>
       <ComponentsProvider>
         <BrowserRouter>
