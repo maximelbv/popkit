@@ -1,4 +1,9 @@
-import { COMPONENTS_PATH, DOC_PATH, OVERVIEW_PATH } from "@/constants/paths";
+import {
+  ABOUT_PATH,
+  COMPONENTS_PATH,
+  DOC_PATH,
+  OVERVIEW_PATH,
+} from "@/constants/paths";
 import { formatStringToPath } from "@/utils/string-utils";
 import {
   GroupedComponent,
@@ -20,15 +25,23 @@ const Sidebar = ({ className }: ISidebarProps) => {
   return (
     <Box className="!w-[250px] !ml-4 !mt-4">
       <Box
-        className={`${className} flex flex-col gap-3`}
+        className={`${className} flex flex-col gap-2`}
         position="fixed"
         style={{ width: "inherit", maxWidth: "100%" }}
       >
-        <NavLink to={`/${DOC_PATH}/${OVERVIEW_PATH}`}>
-          <Button variant="subtle" className="!w-full !mb-[-10px]">
-            Overview
-          </Button>
-        </NavLink>
+        <div className="flex flex-col gap-5">
+          <NavLink to={`/${DOC_PATH}/${OVERVIEW_PATH}`}>
+            <Button variant="subtle" className="!w-full !mb-[-10px]">
+              Overview
+            </Button>
+          </NavLink>
+          <NavLink to={`/${DOC_PATH}/${ABOUT_PATH}`}>
+            <Button variant="subtle" className="!w-full !mb-[-10px]">
+              About
+            </Button>
+          </NavLink>
+        </div>
+
         {Object.entries(categories).map(([category, elements]) => (
           <Category
             key={category}

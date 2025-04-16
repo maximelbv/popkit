@@ -5,12 +5,18 @@ import "./globals.css";
 import DocumentationLayout from "@/layouts/DocumentationLayout";
 import DocumentationPageLayout from "@/layouts/DocumentationPageLayout";
 import ComponentsProvider from "./providers/ComponentsProvider";
-import { COMPONENTS_PATH, DOC_PATH, OVERVIEW_PATH } from "./constants/paths";
+import {
+  ABOUT_PATH,
+  COMPONENTS_PATH,
+  DOC_PATH,
+  OVERVIEW_PATH,
+} from "./constants/paths";
 import { Provider } from "./components/docs/chakra/provider";
 import { Toaster } from "./components/docs/chakra/toaster";
 import DocumentationOverview from "./components/docs/DocumentationOverview";
 import ScrollToTop from "./utils/scroll-to-top";
 import { Analytics } from "@vercel/analytics/react";
+import DocumentationAbout from "./components/docs/DocumentationAbout";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -35,6 +41,7 @@ createRoot(document.getElementById("root")!).render(
                 path={`${OVERVIEW_PATH}`}
                 element={<DocumentationOverview />}
               />
+              <Route path={`${ABOUT_PATH}`} element={<DocumentationAbout />} />
               <Route
                 path={`${COMPONENTS_PATH}/:componentName`}
                 element={<DocumentationPageLayout />}
