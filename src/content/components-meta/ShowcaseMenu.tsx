@@ -133,7 +133,7 @@ const overview = {
         items={mocks.mock1}
         size="sm"
         className="w-[80%] !m-auto"
-        bgColor="#050608"
+        bgColor="#0F0F0F"
       />
     </PreviewWrapper>
   ),
