@@ -44,22 +44,22 @@ const ComponentCard = ({ component }: IComponentCardProps) => {
       <div className="flex justify-between items-center !border-b !border-border-default"></div>
 
       <div className="!mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
-        <div className="col-span-2">
-          {overview.miniPreview ? (
-            overview.miniPreview({ className: "md:!aspect-auto h-full" })
-          ) : (
-            <div className="aspect-video bg-elem-background rounded-md">
-              No preview :(
-            </div>
-          )}
-        </div>
+        {overview.miniPreview ? (
+          overview.miniPreview({
+            className: "md:!aspect-auto h-full col-span-2",
+          })
+        ) : (
+          <div className="aspect-video bg-elem-background rounded-md">
+            No preview :(
+          </div>
+        )}
 
         {examples?.miniExamples && (
           <div className="h-full hidden md:grid">{examples.miniExamples()}</div>
         )}
       </div>
 
-      <div className="!mt-2 !pt-0 !flex !flex-col !gap-3 !h-full !justify-between">
+      <div className="!mt-3 !pt-0 !flex !flex-col !gap-3 !h-full !justify-between">
         <div className="flex flex-col">
           <span className="!text-3xl !font-bold">{name}</span>
           {description && (
@@ -87,46 +87,6 @@ const ComponentCard = ({ component }: IComponentCardProps) => {
         </div>
       </div>
     </div>
-    // <div className="flex flex-col !border !border-border-default rounded-2xl">
-    //   <div className="!py-2 !px-4 flex justify-between items-center !border-b !border-border-default">
-    //     <span className="!text-sm !text-text-muted">{category}</span>
-    //   </div>
-
-    //   {overview.miniPreview ? (
-    //     <div className="!m-4">{overview.miniPreview()}</div>
-    //   ) : (
-    //     <div className="!m-4 aspect-video bg-elem-background rounded-md"></div>
-    //   )}
-    //   {examples?.miniExamples && (
-    //     <div className="!px-4">{examples.miniExamples()}</div>
-    //   )}
-
-    //   <div className="!p-4 !mt-3 !pt-0 !flex !flex-col !gap-3 !h-full !justify-between">
-    //     <div className="flex flex-col">
-    //       <span className="!text-3xl !font-bold">{name}</span>
-    //       {description && (
-    //         <span className="!text-sm !text-text-muted">{description}</span>
-    //       )}
-    //     </div>
-
-    //     <div className="flex gap-2">
-    //       <Button variant="surface" size="xs" asChild>
-    //         <NavLink
-    //           to={`/${DOC_PATH}/${COMPONENTS_PATH}/${formatStringToPath(name)}`}
-    //         >
-    //           <HiOutlineDocument />
-    //           View documentation
-    //         </NavLink>
-    //       </Button>
-    //       {overview.quickCopyCode && (
-    //         <Button variant="surface" size="xs" onClick={handleCopy}>
-    //           {copied ? <FaRegCircleCheck /> : <FiCopy />}
-    //           Copy
-    //         </Button>
-    //       )}
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

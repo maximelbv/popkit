@@ -39,15 +39,16 @@ export default function MyComponent() {
 };
 
 const overview = {
-  miniPreview: () => (
-    <MiniPreviewWrapper>
+  miniPreview: ({ className }: { className: string }) => (
+    <MiniPreviewWrapper className={`${className}`}>
       <TiltCard
         strength={60}
-        className="w-[200px] h-[200px] !rounded-lg overflow-hidden"
+        className="w-[150px] h-[150px] md:w-[300px] md:h-[300px] !rounded-lg overflow-hidden"
       >
-        <LightBeamContainer beamColor="#ffffff49" beamRadius="50%">
-          <Image src="/mocks/images/album-covers/jack-u.jpg" />
-        </LightBeamContainer>
+        <Image
+          className="object-cover w-full h-full"
+          src="/mocks/images/mediteranean/2.jpg"
+        />
       </TiltCard>
     </MiniPreviewWrapper>
   ),
@@ -109,36 +110,80 @@ const props = [
   },
 ];
 
-const examples = () => [
-  <PreviewWrapper>
-    <div className="!flex !gap-6 flex-wrap items-center justify-center">
-      <TiltCard
-        strength={50}
-        className="w-[286px] h-[400px] rounded-xl overflow-hidden"
-      >
-        <LightBeamContainer beamColor="#ffffffa9">
-          <Image src="/mocks/images/pokemon/blastoize.png" />
-        </LightBeamContainer>
-      </TiltCard>
-      <TiltCard
-        strength={50}
-        className="w-[286px] h-[400px] rounded-xl overflow-hidden"
-      >
-        <LightBeamContainer beamColor="#ffffffa9">
-          <Image src="/mocks/images/pokemon/charizard.webp" />
-        </LightBeamContainer>
-      </TiltCard>
-      <TiltCard
-        strength={50}
-        className="w-[286px] h-[400px] rounded-xl overflow-hidden"
-      >
-        <LightBeamContainer beamColor="#ffffffa9">
-          <Image src="/mocks/images/pokemon/venusaur.png" />
-        </LightBeamContainer>
-      </TiltCard>
+const ex = {
+  examples: () => (
+    <PreviewWrapper>
+      <div className="!flex !gap-6 flex-wrap items-center justify-center">
+        <TiltCard
+          strength={50}
+          className="w-[286px] h-[400px] rounded-xl overflow-hidden"
+        >
+          <LightBeamContainer beamColor="#ffffffa9">
+            <Image src="/mocks/images/pokemon/blastoize.png" />
+          </LightBeamContainer>
+        </TiltCard>
+        <TiltCard
+          strength={50}
+          className="w-[286px] h-[400px] rounded-xl overflow-hidden"
+        >
+          <LightBeamContainer beamColor="#ffffffa9">
+            <Image src="/mocks/images/pokemon/charizard.webp" />
+          </LightBeamContainer>
+        </TiltCard>
+        <TiltCard
+          strength={50}
+          className="w-[286px] h-[400px] rounded-xl overflow-hidden"
+        >
+          <LightBeamContainer beamColor="#ffffffa9">
+            <Image src="/mocks/images/pokemon/venusaur.png" />
+          </LightBeamContainer>
+        </TiltCard>
+      </div>
+    </PreviewWrapper>
+  ),
+  miniExamples: () => (
+    <div className="grid gap-4 grid-cols-1">
+      <MiniPreviewWrapper>
+        <div className="!flex !gap-2 flex-wrap items-center justify-center">
+          <TiltCard
+            strength={100}
+            className="w-[95px] h-[133px] rounded-md overflow-hidden"
+          >
+            <LightBeamContainer beamColor="#ffffffa9">
+              <Image src="/mocks/images/pokemon/blastoize.png" />
+            </LightBeamContainer>
+          </TiltCard>
+          <TiltCard
+            strength={100}
+            className="w-[95px] h-[133px] rounded-md overflow-hidden"
+          >
+            <LightBeamContainer beamColor="#ffffffa9">
+              <Image src="/mocks/images/pokemon/charizard.webp" />
+            </LightBeamContainer>
+          </TiltCard>
+          <TiltCard
+            strength={100}
+            className="w-[95px] h-[133px] rounded-md overflow-hidden"
+          >
+            <LightBeamContainer beamColor="#ffffffa9">
+              <Image src="/mocks/images/pokemon/venusaur.png" />
+            </LightBeamContainer>
+          </TiltCard>
+        </div>
+      </MiniPreviewWrapper>
+      <MiniPreviewWrapper>
+        <TiltCard
+          strength={60}
+          className="w-[150px] h-[150px] !rounded-lg overflow-hidden"
+        >
+          <LightBeamContainer beamColor="#ffffff49" beamRadius="50%">
+            <Image src="/mocks/images/album-covers/jack-u.jpg" />
+          </LightBeamContainer>
+        </TiltCard>
+      </MiniPreviewWrapper>
     </div>
-  </PreviewWrapper>,
-];
+  ),
+};
 
 const TiltCardMeta: IComponent = {
   name: "Tilt Card",
@@ -147,7 +192,7 @@ const TiltCardMeta: IComponent = {
   category: Categories.EVENT_EFFECTS,
   overview: overview,
   installation: [manualInstallation],
-  examples: examples,
+  examples: ex,
   props: props,
   dependencies: [],
 };

@@ -40,7 +40,7 @@ export default function MyComponent() {
 
 const overview = {
   miniPreview: () => (
-    <MiniPreviewWrapper>
+    <MiniPreviewWrapper className="col-span-3 !aspect-auto !py-20">
       <LightBeamContainer className="bg-elem-elem-background !h-fit !border rounded-3xl !border-border-light flex flex-col gap-3 !p-10 justify-center">
         <Logo />
         <span className="text-text-muted">Elegant UI components for React</span>

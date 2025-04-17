@@ -114,16 +114,16 @@ export default function MyComponent() {
 };
 
 const overview = {
-  miniPreview: () => (
-    <MiniPreviewWrapper>
+  miniPreview: ({ className }: { className: string }) => (
+    <MiniPreviewWrapper className={`${className}`}>
       <ShowcaseMenu
         textAlignment="center"
         items={mocks.mock1}
-        size="xs"
+        size="md"
         bgColor="#18181b"
         displaySeparators={false}
         className="w-full !m-auto"
-        itemClassName="!p-1 !font-semibold"
+        itemClassName="!p-1 !font-semibold !text-[26px] md:!text-[48px]"
       />
     </MiniPreviewWrapper>
   ),
@@ -228,54 +228,82 @@ const props = [
   },
 ];
 
-const examples = () => [
-  <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-    <MiniPreviewWrapper className="!bg-[#F26850]">
-      <ShowcaseMenu
-        items={mocks.mock3}
-        size="md"
-        textAlignment="center"
-        textColor="#F6EBE2"
-        bgColor="#F26850"
-        className="min-w-[80%] !m-auto"
-        itemClassName="!rounded-md"
-        displaySeparators={false}
-        displayImages={false}
-      />
-    </MiniPreviewWrapper>
-    <MiniPreviewWrapper className="!border !border-border-default">
-      <ShowcaseMenu
-        items={mocks.mock5}
-        size="xxs"
-        className="min-w-[80%] !m-auto"
-        bgColor="#18181b"
-        backgroundAnimation={false}
-      />
-    </MiniPreviewWrapper>
-    <MiniPreviewWrapper className="!bg-[#45853B]">
-      <ShowcaseMenu
-        items={mocks.mock2}
-        size="sm"
-        textAlignment="center"
-        textColor="#BADD7F"
-        bgColor="#45853B"
-        className="!font-darumadrop min-w-[80%] !m-auto"
-        displaySeparators={false}
-        displayImages={false}
-      />
-    </MiniPreviewWrapper>
-    <MiniPreviewWrapper className="!bg-[#F0F1FA]">
-      <ShowcaseMenu
-        textColor="blue"
-        bgColor="#F0F1FA"
-        items={mocks.mock4}
-        size="xxs"
-        className="min-w-[90%] !m-auto !font-jetbrains"
-        itemClassName="!p-0 !leading-[1.1] !text-[75px]"
-      />
-    </MiniPreviewWrapper>
-  </div>,
-];
+const ex = {
+  examples: () => (
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+      <MiniPreviewWrapper className="!bg-[#F26850]">
+        <ShowcaseMenu
+          items={mocks.mock3}
+          size="md"
+          textAlignment="center"
+          textColor="#F6EBE2"
+          bgColor="#F26850"
+          className="min-w-[80%] !m-auto"
+          itemClassName="!rounded-md"
+          displaySeparators={false}
+          displayImages={false}
+        />
+      </MiniPreviewWrapper>
+      <MiniPreviewWrapper className="!border !border-border-default">
+        <ShowcaseMenu
+          items={mocks.mock5}
+          size="xxs"
+          className="min-w-[80%] !m-auto"
+          bgColor="#18181b"
+          backgroundAnimation={false}
+        />
+      </MiniPreviewWrapper>
+      <MiniPreviewWrapper className="!bg-[#45853B]">
+        <ShowcaseMenu
+          items={mocks.mock2}
+          size="sm"
+          textAlignment="center"
+          textColor="#BADD7F"
+          bgColor="#45853B"
+          className="!font-darumadrop min-w-[80%] !m-auto"
+          displaySeparators={false}
+          displayImages={false}
+        />
+      </MiniPreviewWrapper>
+      <MiniPreviewWrapper className="!bg-[#F0F1FA]">
+        <ShowcaseMenu
+          textColor="blue"
+          bgColor="#F0F1FA"
+          items={mocks.mock4}
+          size="xxs"
+          className="min-w-[90%] !m-auto !font-jetbrains"
+          itemClassName="!p-0 !leading-[1.1] !text-[75px]"
+        />
+      </MiniPreviewWrapper>
+    </div>
+  ),
+  miniExamples: () => (
+    <div className="grid gap-4 grid-cols-1">
+      <MiniPreviewWrapper className="!bg-[#45853B]">
+        <ShowcaseMenu
+          items={mocks.mock2}
+          size="xxs"
+          textAlignment="center"
+          textColor="#BADD7F"
+          bgColor="#45853B"
+          className="!font-darumadrop min-w-[80%] !m-auto"
+          displaySeparators={false}
+          displayImages={false}
+        />
+      </MiniPreviewWrapper>
+      <MiniPreviewWrapper className="!bg-[#F0F1FA]">
+        <ShowcaseMenu
+          textColor="blue"
+          bgColor="#F0F1FA"
+          items={mocks.mock4}
+          size="xxs"
+          className="min-w-[90%] !m-auto !font-jetbrains"
+          itemClassName="!p-0 !leading-[1.1] !text-[45px]"
+        />
+      </MiniPreviewWrapper>
+    </div>
+  ),
+};
 
 const ShowcaseMenuMeta: IComponent = {
   name: "Showcase Menu",
@@ -284,7 +312,7 @@ const ShowcaseMenuMeta: IComponent = {
   category: Categories.NAVIGATION,
   overview: overview,
   installation: [manualInstallation],
-  examples: examples,
+  examples: ex,
   props: props,
   dependencies: [],
 };

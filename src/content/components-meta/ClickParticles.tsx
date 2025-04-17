@@ -52,8 +52,8 @@ export default function MyComponent() {
 };
 
 const overview = {
-  miniPreview: () => (
-    <MiniPreviewWrapper>
+  miniPreview: ({ className }: { className: string }) => (
+    <MiniPreviewWrapper className={`${className}`}>
       <ClickParticles
         particleCount={20}
         particleSize={2}
@@ -210,72 +210,120 @@ const props = [
   },
 ];
 
-const examples = () => [
-  <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-    <MiniPreviewWrapper>
-      <ClickParticles
-        shape="confetti"
-        particleCount={30}
-        particleColor={["#f87171", "#60a5fa", "#34d399", "#fbbf24"]}
-        particleSize={8}
-        duration={2}
-        distanceMin={100}
-        distanceMax={200}
-        scaleFrom={1}
-        scaleTo={0.8}
-        className="w-full h-[400px] flex items-center justify-center select-none"
-      >
-        <span className="text-text-muted !text-6xl !font-bold">
-          Confetti 🎉
-        </span>
-      </ClickParticles>
-    </MiniPreviewWrapper>
+const ex = {
+  examples: () => (
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+      <MiniPreviewWrapper>
+        <ClickParticles
+          shape="confetti"
+          particleCount={30}
+          particleColor={["#f87171", "#60a5fa", "#34d399", "#fbbf24"]}
+          particleSize={8}
+          duration={2}
+          distanceMin={100}
+          distanceMax={200}
+          scaleFrom={1}
+          scaleTo={0.8}
+          className="w-full h-[400px] flex items-center justify-center select-none"
+        >
+          <span className="text-text-muted !text-6xl !font-bold">
+            Confetti 🎉
+          </span>
+        </ClickParticles>
+      </MiniPreviewWrapper>
 
-    <MiniPreviewWrapper>
-      <ClickParticles
-        shape="square"
-        particleCount={25}
-        particleSize={12}
-        duration={1.5}
-        distanceMin={100}
-        distanceMax={200}
-        scaleFrom={1}
-        scaleTo={0.2}
-        particleColor={["#a0e9ff", "#7ed6df", "#74b9ff", "#dff9fb"]}
-        ease="expo.out"
-        className="w-full h-[400px] flex items-center justify-center select-none"
-      >
-        <span className="text-text-muted !text-6xl !font-bold">Freeze ❄️</span>
-      </ClickParticles>
-    </MiniPreviewWrapper>
+      <MiniPreviewWrapper>
+        <ClickParticles
+          shape="square"
+          particleCount={25}
+          particleSize={12}
+          duration={1.5}
+          distanceMin={100}
+          distanceMax={200}
+          scaleFrom={1}
+          scaleTo={0.2}
+          particleColor={["#a0e9ff", "#7ed6df", "#74b9ff", "#dff9fb"]}
+          ease="expo.out"
+          className="w-full h-[400px] flex items-center justify-center select-none"
+        >
+          <span className="text-text-muted !text-6xl !font-bold">
+            Freeze ❄️
+          </span>
+        </ClickParticles>
+      </MiniPreviewWrapper>
 
-    <MiniPreviewWrapper>
-      <ClickParticles
-        particleCount={40}
-        particleSize={100}
-        particleColor={["#F5C6CE", "#E8AEB4", "#D98E97", "#C97883"]}
-        className="w-full h-[400px] flex items-center justify-center select-none"
-      >
-        <span className="text-text-muted !text-6xl !font-bold">Makeup 💅</span>
-      </ClickParticles>
-    </MiniPreviewWrapper>
+      <MiniPreviewWrapper>
+        <ClickParticles
+          particleCount={40}
+          particleSize={100}
+          particleColor={["#F5C6CE", "#E8AEB4", "#D98E97", "#C97883"]}
+          className="w-full h-[400px] flex items-center justify-center select-none"
+        >
+          <span className="text-text-muted !text-6xl !font-bold">
+            Makeup 💅
+          </span>
+        </ClickParticles>
+      </MiniPreviewWrapper>
 
-    <MiniPreviewWrapper>
-      <ClickParticles
-        particleCount={30}
-        particleSize={30}
-        particleColor={["#1b3d1a", "#2e5d2a", "#3f7d3a", "#4e9d4b"]}
-        distanceMin={40}
-        distanceMax={100}
-        shape="leaf"
-        duration={0.8}
-        className="w-full h-[400px] flex items-center justify-center select-none"
-      >
-        <span className="text-text-muted !text-6xl !font-bold">Bush 🌳</span>
-      </ClickParticles>
-    </MiniPreviewWrapper>
-  </div>,
-];
+      <MiniPreviewWrapper>
+        <ClickParticles
+          particleCount={30}
+          particleSize={30}
+          particleColor={["#1b3d1a", "#2e5d2a", "#3f7d3a", "#4e9d4b"]}
+          distanceMin={40}
+          distanceMax={100}
+          shape="leaf"
+          duration={0.8}
+          className="w-full h-[400px] flex items-center justify-center select-none"
+        >
+          <span className="text-text-muted !text-6xl !font-bold">Bush 🌳</span>
+        </ClickParticles>
+      </MiniPreviewWrapper>
+    </div>
+  ),
+  miniExamples: () => (
+    <div className="grid gap-4 grid-cols">
+      <MiniPreviewWrapper>
+        <ClickParticles
+          shape="confetti"
+          particleCount={30}
+          particleColor={["#f87171", "#60a5fa", "#34d399", "#fbbf24"]}
+          particleSize={8}
+          duration={2}
+          distanceMin={100}
+          distanceMax={200}
+          scaleFrom={1}
+          scaleTo={0.8}
+          className="w-full h-[400px] flex items-center justify-center select-none"
+        >
+          <span className="text-text-muted !text-4xl !font-bold">
+            Confetti 🎉
+          </span>
+        </ClickParticles>
+      </MiniPreviewWrapper>
+
+      <MiniPreviewWrapper>
+        <ClickParticles
+          shape="square"
+          particleCount={25}
+          particleSize={12}
+          duration={1.5}
+          distanceMin={100}
+          distanceMax={200}
+          scaleFrom={1}
+          scaleTo={0.2}
+          particleColor={["#a0e9ff", "#7ed6df", "#74b9ff", "#dff9fb"]}
+          ease="expo.out"
+          className="w-full h-[400px] flex items-center justify-center select-none"
+        >
+          <span className="text-text-muted !text-4xl !font-bold">
+            Freeze ❄️
+          </span>
+        </ClickParticles>
+      </MiniPreviewWrapper>
+    </div>
+  ),
+};
 
 const Meta: IComponent = {
   name: "Click Particles",
@@ -285,7 +333,7 @@ const Meta: IComponent = {
   status: Status.NEW,
   overview: overview,
   installation: [manualInstallation],
-  examples: examples,
+  examples: ex,
   props: props,
   dependencies: [
     {
