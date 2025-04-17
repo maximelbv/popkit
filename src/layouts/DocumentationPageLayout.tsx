@@ -72,11 +72,9 @@ const DocumentationPageLayout = () => {
           <ComponentInstallation installation={installation} />
         </DocumentationElement>
       )}
-      {examples && (
+      {examples?.examples && (
         <DocumentationElement title="Examples">
-          {examples().map((example, index) => (
-            <div key={index}>{example}</div>
-          ))}
+          {examples.examples()}
         </DocumentationElement>
       )}
       {props && (

@@ -37,10 +37,15 @@ export interface IInstallationMode {
 }
 
 export interface IOverview {
-  miniPreview?: () => JSX.Element;
+  miniPreview?: ({ className }: { className: string }) => JSX.Element;
   preview: () => JSX.Element;
   code?: string;
   quickCopyCode?: string;
+}
+
+export interface IExamples {
+  examples?: () => JSX.Element;
+  miniExamples?: () => JSX.Element;
 }
 
 export interface IComponent {
@@ -50,7 +55,7 @@ export interface IComponent {
   status?: (typeof Status)[keyof typeof Status];
   overview: IOverview;
   installation?: IInstallationMode[];
-  examples?: () => JSX.Element[];
+  examples?: IExamples;
   info?: () => JSX.Element;
   props?: IProp[];
   dependencies?: IDependency[];

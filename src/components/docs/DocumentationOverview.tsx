@@ -8,7 +8,7 @@ const DocumentationOverview = () => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-1">
-        <span className="!font-bold !text-2xl xs:!text-3xl md:!text-4xl flex gap-2 items-center">
+        <span className="!font-bold !text-2xl xs:!text-3xl md:!text-5xl flex gap-2 items-center">
           <LuBox />
           Components Overview
         </span>
@@ -18,7 +18,7 @@ const DocumentationOverview = () => {
         </span>
       </div>
 
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+      <div className="grid gap-4 grid-cols-1 ">
         {!loadingMeta &&
           componentsMeta.map((component) => (
             <ComponentCard component={component} key={component.name} />

@@ -66,14 +66,14 @@ export default function MyComponent() {
 };
 
 const overview = {
-  miniPreview: () => (
-    <MiniPreviewWrapper reloadButton={true}>
+  miniPreview: ({ className }: { className: string }) => (
+    <MiniPreviewWrapper className={`${className}`} reloadButton={true}>
       <BounceCards
         images={mocks.preview}
-        imgWidth="100px"
-        imgHeight="100px"
-        spacing={-10}
-        itemClassName="!border-2 !border-white"
+        imgWidth="150px"
+        imgHeight="150px"
+        spacing={-15}
+        itemClassName="!border-2 !border-white !w-[100px] !h-[100px] md:!w-[150px] md:!h-[150px]"
       />
     </MiniPreviewWrapper>
   ),
@@ -159,29 +159,55 @@ const props = [
   },
 ];
 
-const examples = () => [
-  <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-    <MiniPreviewWrapper className="!bg-[#F0F1FA]" reloadButton={true}>
-      <BounceCards
-        images={mocks.cards}
-        imgWidth="135px"
-        imgHeight="189px"
-        rotations={[-20, -10, 1, 10, 20]}
-        itemClassName="shadow-md first:!mt-[20px] last:!mt-[20px] [&:nth-child(3)]:!mt-[-10px] hover:!translate-y-[-20px] transition-all"
-      />
-    </MiniPreviewWrapper>
-    <MiniPreviewWrapper reloadButton={true}>
-      <BounceCards
-        images={mocks.preview}
-        imgWidth="300px"
-        imgHeight="230px"
-        // rotations={[18, -10, 20, 4]}
-        spacing={-300}
-        delay={0.5}
-      />
-    </MiniPreviewWrapper>
-  </div>,
-];
+const ex = {
+  examples: () => (
+    <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+      <MiniPreviewWrapper className="!bg-[#F0F1FA]" reloadButton={true}>
+        <BounceCards
+          images={mocks.cards}
+          imgWidth="135px"
+          imgHeight="189px"
+          rotations={[-20, -10, 1, 10, 20]}
+          itemClassName="shadow-md first:!mt-[20px] last:!mt-[20px] [&:nth-child(3)]:!mt-[-10px] hover:!translate-y-[-20px] transition-all"
+        />
+      </MiniPreviewWrapper>
+      <MiniPreviewWrapper reloadButton={true}>
+        <BounceCards
+          images={mocks.preview}
+          imgWidth="300px"
+          imgHeight="230px"
+          // rotations={[18, -10, 20, 4]}
+          spacing={-300}
+          delay={0.5}
+        />
+      </MiniPreviewWrapper>
+    </div>
+  ),
+  miniExamples: () => (
+    <div className="grid gap-4 grid-cols-1">
+      <MiniPreviewWrapper className="!bg-[#F0F1FA]" reloadButton={true}>
+        <BounceCards
+          images={mocks.cards}
+          imgWidth="135px"
+          imgHeight="189px"
+          rotations={[-20, -10, 1, 10, 20]}
+          className="scale-50"
+          itemClassName="shadow-md first:!mt-[20px] last:!mt-[20px] [&:nth-child(3)]:!mt-[-10px] hover:!translate-y-[-20px] transition-all"
+        />
+      </MiniPreviewWrapper>
+      <MiniPreviewWrapper reloadButton={true}>
+        <BounceCards
+          images={mocks.preview}
+          imgWidth="150px"
+          imgHeight="115px"
+          rotations={[18, -10, 20, 4]}
+          spacing={-150}
+          delay={0.5}
+        />
+      </MiniPreviewWrapper>
+    </div>
+  ),
+};
 
 const BounceMenuMeta: IComponent = {
   name: "Bounce Cards",
@@ -190,7 +216,7 @@ const BounceMenuMeta: IComponent = {
   category: Categories.ANIMATIONS,
   overview: overview,
   installation: [manualInstallation],
-  examples: examples,
+  examples: ex,
   props: props,
   dependencies: [
     {
