@@ -52,8 +52,6 @@ const props = [
   },
 ];
 
-const examples = () => [];
-
 const Meta: IComponent = {
   name: "",
   description: "",
@@ -61,7 +59,6 @@ const Meta: IComponent = {
   status: Status.NEW,
   overview: overview,
   installation: [manualInstallation],
-  examples: examples,
   props: props,
   dependencies: [],
 };
