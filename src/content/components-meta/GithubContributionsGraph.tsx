@@ -60,6 +60,7 @@ const ex = {
 const Meta: IComponent = {
   name: "Github Contributions Graph",
   description: "",
+  created: "2025-04-28",
   category: Categories.DATA_VIZ,
   status: Status.NEW,
   overview: overview,

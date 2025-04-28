@@ -60,6 +60,7 @@ const ex = {
 const Meta: IComponent = {
   name: "",
   description: "",
+  created: "2025-03-24",
   category: Categories.NAVIGATION,
   status: Status.NEW,
   overview: overview,

@@ -51,6 +51,8 @@ export interface IExamples {
 export interface IComponent {
   name: string;
   description?: string;
+  created: string;
+  updated?: string;
   category: (typeof Categories)[keyof typeof Categories];
   status?: (typeof Status)[keyof typeof Status];
   overview: IOverview;

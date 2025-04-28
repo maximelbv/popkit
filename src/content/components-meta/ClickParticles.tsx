@@ -329,6 +329,7 @@ const Meta: IComponent = {
   name: "Click Particles",
   description:
     "A customizable component that creates animated particle bursts on click, supporting multiple shapes, colors, and motion settings.",
+  created: "2025-04-09",
   category: Categories.EVENT_EFFECTS,
   status: Status.NEW,
   overview: overview,

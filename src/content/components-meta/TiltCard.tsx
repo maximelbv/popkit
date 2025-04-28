@@ -189,6 +189,7 @@ const TiltCardMeta: IComponent = {
   name: "Tilt Card",
   description:
     "A component that applies a 3D tilt effect, dynamically adjusting its rotation based on cursor movement within a defined radius.",
+  created: "2025-03-24",
   category: Categories.EVENT_EFFECTS,
   overview: overview,
   installation: [manualInstallation],

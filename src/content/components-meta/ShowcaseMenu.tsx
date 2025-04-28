@@ -309,6 +309,7 @@ const ShowcaseMenuMeta: IComponent = {
   name: "Showcase Menu",
   description:
     "A customizable navigation menu with interactive hover effects and optional image previews, featuring adjustable styles and animations.",
+  created: "2025-03-12",
   category: Categories.NAVIGATION,
   overview: overview,
   installation: [manualInstallation],

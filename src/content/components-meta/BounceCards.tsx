@@ -213,6 +213,7 @@ const BounceMenuMeta: IComponent = {
   name: "Bounce Cards",
   description:
     "A component that displays a set of animated image cards with customizable spacing, rotations, and smooth spring-based transitions using Framer Motion.",
+  created: "2025-03-18",
   category: Categories.ANIMATIONS,
   overview: overview,
   installation: [manualInstallation],
