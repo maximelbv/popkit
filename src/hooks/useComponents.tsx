@@ -1,4 +1,5 @@
 import { IComponent } from "@/types/components";
+import { sortByDateCreation } from "@/utils/date-utils";
 import { getAllComponentsCode, getAllComponentsMeta } from "@/utils/file-utils";
 import { createContext, useEffect, useState } from "react";
 
@@ -36,7 +37,8 @@ export function useComponents() {
 
   useEffect(() => {
     try {
-      setComponentsMeta(getAllComponentsMeta());
+      const compMeta = getAllComponentsMeta();
+      setComponentsMeta(sortByDateCreation(compMeta));
     } catch (err) {
       setErrorMeta(
         err instanceof Error
