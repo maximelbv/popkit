@@ -52,6 +52,11 @@ const props = [
   },
 ];
 
+const ex = {
+  examples: () => <div className="grid gap-4 grid-cols-1 md:grid-cols-2"></div>,
+  miniExamples: () => <div className="grid gap-4 grid-cols"></div>,
+};
+
 const Meta: IComponent = {
   name: "",
   description: "",
@@ -59,6 +64,7 @@ const Meta: IComponent = {
   status: Status.NEW,
   overview: overview,
   installation: [manualInstallation],
+  examples: ex,
   props: props,
   dependencies: [],
 };
