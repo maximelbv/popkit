@@ -21,8 +21,7 @@ const CodeBlock = ({
 }: ICodeBlockProps) => {
   const [copied, setCopied] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [maxHeight, setMaxHeight] = useState("400px");
-  const [hasOverflow, setHasOverflow] = useState(false);
+  const [hasVerticalOverflow, setHasVerticalOverflow] = useState(false);
   const codeBlockRef = useRef<HTMLDivElement>(null);
 
   const customStyles = {
@@ -41,10 +40,11 @@ const CodeBlock = ({
       borderRadius: "8px",
       margin: "0",
       border: "1px solid var(--color-border-default)",
-      maxHeight: maxHeight,
-      overflow: expanded ? "auto" : "hidden",
+      maxHeight: expanded ? "800px" : "400px",
+      overflowX: expanded ? "auto" : hasVerticalOverflow ? "auto" : "auto",
+      overflowY: expanded ? "auto" : "hidden",
     },
-  };
+  } as Record<string, React.CSSProperties>;
 
   useEffect(() => {
     const checkOverflow = () => {
@@ -53,7 +53,7 @@ const CodeBlock = ({
         if (preElement) {
           const scrollHeight = preElement.scrollHeight;
           const clientHeight = preElement.clientHeight;
-          setHasOverflow(scrollHeight > clientHeight);
+          setHasVerticalOverflow(scrollHeight > clientHeight);
         }
       }
     };
@@ -72,10 +72,7 @@ const CodeBlock = ({
 
   const handleCopy = async () => {
     try {
-      if (!navigator.clipboard) {
-        console.error("Clipboard API not supported");
-        return;
-      }
+      if (!navigator.clipboard) return;
       await navigator.clipboard.writeText(code);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
@@ -85,11 +82,6 @@ const CodeBlock = ({
   };
 
   const handleExpand = () => {
-    if (!expanded) {
-      setMaxHeight("800px");
-    } else {
-      setMaxHeight("400px");
-    }
     setExpanded(!expanded);
   };
 
@@ -99,7 +91,7 @@ const CodeBlock = ({
       style={{ position: "relative" }}
       className={`!max-w-full !z-10 ${className}`}
     >
-      {hasOverflow && !expanded && (
+      {hasVerticalOverflow && !expanded && (
         <div
           className="!w-full !h-[30%] !absolute !bottom-0 !left-0 !rounded-md !z-0"
           style={{
@@ -111,16 +103,16 @@ const CodeBlock = ({
       <Button
         variant="ghost"
         onClick={handleCopy}
-        className={`!cursor-pointer !absolute !top-2 !right-2 !p-2 !rounded-md hover:!bg-background !bg-elem-background`}
+        className="!cursor-pointer !absolute !top-2 !right-2 !p-2 !rounded-md hover:!bg-background !bg-elem-background"
       >
         {copied ? <FaRegCircleCheck /> : <FiCopy />}
       </Button>
 
-      {(hasOverflow || expanded) && (
+      {hasVerticalOverflow && (
         <Button
           variant="ghost"
           onClick={handleExpand}
-          className={`!cursor-pointer !absolute !bottom-2 !left-1/2 -translate-x-1/2 !p-2 !rounded-md hover:!bg-background !bg-elem-background`}
+          className="!cursor-pointer !absolute !bottom-2 !left-1/2 -translate-x-1/2 !p-2 !rounded-md hover:!bg-background !bg-elem-background"
         >
           {expanded ? <MdExpandLess /> : <MdExpandMore />}
           {expanded ? "Collapse" : "Expand"}
