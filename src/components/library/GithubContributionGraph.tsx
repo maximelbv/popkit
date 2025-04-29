@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, useMemo, CSSProperties, FC } from "react";
 
-type Contribution = {
-  date: string;
-  count: number;
-  level: number;
-};
+type Contribution = { date: string; count: number; level: number };
 
 const generateTheme = (rgb: string) => [
   `rgba(${rgb}, 0.25)`,
@@ -25,116 +21,172 @@ const themes = {
 } as const;
 
 type Theme = keyof typeof themes;
-
-type GithubContributionGraphProps = {
+type Props = {
   username: string;
   apiBaseUrl?: string;
   rows?: number;
   columns?: number;
-  tileStyles?: object;
-  gridStyles?: object;
+  tileStyles?: CSSProperties;
+  gridStyles?: CSSProperties;
   theme?: Theme;
+  enableTooltip?: boolean;
+  displayName?: boolean;
 };
 
-const getTileColor = (level: number, theme: Theme): string => {
-  if (level === 0) {
-    return "rgba(107, 114, 128, 0.125)";
+const getTileColor = (level: number, theme: Theme) =>
+  level === 0
+    ? "rgba(107, 114, 128, 0.125)"
+    : themes[theme][level - 1] || "transparent";
+
+const fetchContributions = async (url: string): Promise<Contribution[]> => {
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.contributions || [];
+};
+
+const padContributions = (
+  contributions: Contribution[],
+  target: number
+): Contribution[] => {
+  const missing = target - contributions.length;
+  return missing > 0
+    ? Array.from({ length: missing }, () => ({
+        date: "",
+        count: 0,
+        level: 0,
+      })).concat(contributions)
+    : contributions;
+};
+
+const generateGrid = (
+  contributions: Contribution[],
+  rows: number,
+  columns: number
+): Contribution[][] => {
+  const grid: Contribution[][] = [];
+  for (let i = 0; i < columns; i++) {
+    grid.push(contributions.slice(i * rows, (i + 1) * rows));
   }
-  const themeColors = themes[theme] || themes.green;
-  return themeColors[level - 1] || "transparent";
+  return grid;
 };
 
-const GithubContributionGraph: React.FC<GithubContributionGraphProps> = ({
-  username = "torvalds",
+const Tile: FC<{
+  tile: Contribution;
+  theme: Theme;
+  tileStyles?: CSSProperties;
+  enableTooltip: boolean;
+}> = ({ tile, theme, tileStyles, enableTooltip }) => {
+  const [hover, setHover] = useState(false);
+
+  return (
+    <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        width: 12,
+        height: 12,
+        backgroundColor: getTileColor(tile.level, theme),
+        borderRadius: 2,
+        cursor: "pointer",
+        position: "relative",
+        ...tileStyles,
+      }}
+    >
+      {enableTooltip && hover && tile.date && (
+        <div
+          style={{
+            position: "absolute",
+            top: -30,
+            left: "50%",
+            transform: "translateX(-50%)",
+            padding: "4px 8px",
+            background: "black",
+            color: "white",
+            fontSize: 10,
+            borderRadius: 4,
+            whiteSpace: "nowrap",
+            pointerEvents: "none",
+            zIndex: 10,
+          }}
+        >
+          {tile.count} contribution{tile.count !== 1 ? "s" : ""} on {tile.date}
+        </div>
+      )}
+    </div>
+  );
+};
+
+const GithubContributionGraph: FC<Props> = ({
+  username,
   apiBaseUrl = "https://github-contributions-api.jogruber.de",
   rows = 7,
   columns = 52,
   tileStyles,
   gridStyles,
   theme = "green",
+  enableTooltip = true,
+  displayName = false,
 }) => {
   const [contributions, setContributions] = useState<Contribution[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchContributions = async () => {
-      try {
-        const response = await fetch(`${apiBaseUrl}/v4/${username}?y=last`);
-        const data = await response.json();
-        setContributions(data.contributions || []);
-      } catch (error) {
-        console.error("Failed to fetch GitHub contributions:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchContributions(`${apiBaseUrl}/v4/${username}?y=last`)
+      .then(setContributions)
+      .catch((err) =>
+        console.error("Failed to fetch GitHub contributions:", err)
+      )
+      .finally(() => setLoading(false));
+  }, [username, apiBaseUrl]);
 
-    fetchContributions();
-  }, [apiBaseUrl, username]);
+  const grid = useMemo(() => {
+    const today = new Date();
+    const currentDayIndex = today.getDay();
+    const fullWeeks = columns - 1;
+    const expected =
+      rows === 7 ? fullWeeks * 7 + currentDayIndex + 1 : rows * columns;
+    const padded = padContributions(contributions.slice(-expected), expected);
+    return generateGrid(padded, rows, columns);
+  }, [contributions, rows, columns]);
 
-  if (loading) {
-    return <div>Loading graph...</div>;
-  }
-
-  const today = new Date();
-  const currentDayIndex = today.getDay();
-  const fullWeeks = columns - 1;
-  const expectedTiles =
-    rows === 7 ? fullWeeks * 7 + currentDayIndex + 1 : rows * columns;
-
-  let recentContributions = contributions.slice(-expectedTiles);
-
-  if (recentContributions.length < expectedTiles) {
-    const missingTiles = expectedTiles - recentContributions.length;
-    const emptyDays: Contribution[] = Array.from(
-      { length: missingTiles },
-      () => ({
-        date: "",
-        count: 0,
-        level: 0,
-      })
-    );
-    recentContributions = [...emptyDays, ...recentContributions];
-  }
-
-  const grid: Contribution[][] = [];
-
-  if (rows === 7) {
-    for (let i = 0; i < fullWeeks; i++) {
-      grid.push(recentContributions.slice(i * 7, (i + 1) * 7));
-    }
-    grid.push(recentContributions.slice(fullWeeks * 7));
-  } else {
-    for (let i = 0; i < columns; i++) {
-      grid.push(recentContributions.slice(i * rows, (i + 1) * rows));
-    }
-  }
+  if (loading) return <div>Loading graph...</div>;
 
   return (
-    <div style={{ display: "flex", gap: "4px", ...gridStyles }}>
-      {grid.map((column, colIdx) => (
-        <div
-          key={colIdx}
-          style={{ display: "flex", flexDirection: "column", gap: "4px" }}
-        >
-          {column.map((tile, rowIdx) => (
-            <div
-              key={`${colIdx}-${rowIdx}`}
-              title={`${tile.count} contribution${tile.count !== 1 ? "s" : ""}${
-                tile.date ? ` on ${tile.date}` : ""
-              }`}
-              style={{
-                width: "12px",
-                height: "12px",
-                backgroundColor: getTileColor(tile.level, theme),
-                borderRadius: "2px",
-                cursor: "pointer",
-                ...tileStyles,
-              }}
-            />
-          ))}
-        </div>
-      ))}
+    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <div style={{ display: "flex", gap: 4, ...gridStyles }}>
+        {grid.map((column, colIdx) => (
+          <div
+            key={colIdx}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 4,
+              ...gridStyles,
+            }}
+          >
+            {column.map((tile, rowIdx) => (
+              <Tile
+                key={`${colIdx}-${rowIdx}`}
+                tile={tile}
+                theme={theme}
+                tileStyles={tileStyles}
+                enableTooltip={enableTooltip}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+      <div>
+        {displayName && (
+          <a
+            style={{ color: "#A1A1AA" }}
+            target="_blank"
+            href={`https://github.com/${username}`}
+          >
+            @{username}
+          </a>
+        )}
+      </div>
     </div>
   );
 };

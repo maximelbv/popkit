@@ -29,8 +29,8 @@ const manualInstallation = {
 };
 
 const overview = {
-  miniPreview: () => (
-    <MiniPreviewWrapper>
+  miniPreview: ({ className }: { className: string }) => (
+    <MiniPreviewWrapper className={`${className}`}>
       <></>
     </MiniPreviewWrapper>
   ),

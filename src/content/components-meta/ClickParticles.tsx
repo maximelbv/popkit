@@ -2,7 +2,6 @@ import MiniPreviewWrapper from "@/components/docs/MiniPreviewWrapper";
 import PreviewWrapper from "@/components/docs/PreviewWrapper";
 import { ClickParticles } from "@/components/library/ClickParticles";
 import { Categories } from "@/constants/categories";
-import { Status } from "@/constants/status";
 import { IComponent } from "@/types/components";
 
 const manualInstallation = {
@@ -331,7 +330,6 @@ const Meta: IComponent = {
     "A customizable component that creates animated particle bursts on click, supporting multiple shapes, colors, and motion settings.",
   created: "2025-04-09",
   category: Categories.EVENT_EFFECTS,
-  status: Status.NEW,
   overview: overview,
   installation: [manualInstallation],
   examples: ex,
