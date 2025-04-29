@@ -1,5 +1,6 @@
 import MiniPreviewWrapper from "@/components/docs/MiniPreviewWrapper";
 import PreviewWrapper from "@/components/docs/PreviewWrapper";
+import GithubContributionGraph from "@/components/library/GithubContributionGraph";
 import { Categories } from "@/constants/categories";
 import { Status } from "@/constants/status";
 import { IComponent } from "@/types/components";
@@ -10,19 +11,37 @@ const manualInstallation = {
   steps: [
     {
       step: 1,
+      title: "Deploy the GitHub Contributions API",
+      description:
+        "Clone and deploy the server from https://github.com/grubersjoe/github-contributions-api to your own hosting (Vercel, Render, etc.).",
+      codeBlock: {
+        tsTailwind: `git clone https://github.com/grubersjoe/github-contributions-api.git
+cd github-contributions-api
+npm install
+npm run start`,
+      },
+    },
+    {
+      step: 2,
       title: "Copy the component to your project",
-      description: "Place it in your /components folder",
+      description:
+        "Place the GithubContributionGraph component into your /components folder.",
       codeBlock: {
         tsTailwind: "",
       },
     },
     {
-      step: 2,
+      step: 3,
       title: "Import and Customize",
       description:
-        "Use it anywhere in your app, adjust props for customization",
+        "Use the component anywhere in your app. Pass your GitHub username and your API base URL as props.",
       codeBlock: {
-        tsTailwind: ``,
+        tsTailwind: `import GithubContributionGraph from '@/components/GithubContributionGraph';
+  
+<GithubContributionGraph 
+  username="your-github-username" 
+  apiBaseUrl="https://your-api-url.com" 
+/>`,
       },
     },
   ],
@@ -36,7 +55,7 @@ const overview = {
   ),
   preview: () => (
     <PreviewWrapper>
-      <></>
+      <GithubContributionGraph username="maximelbv" />
     </PreviewWrapper>
   ),
   code: ``,
@@ -58,7 +77,7 @@ const ex = {
 };
 
 const Meta: IComponent = {
-  name: "Github Contributions Graph",
+  name: "Github Contribution Graph",
   description: "",
   created: "2025-04-28",
   category: Categories.DATA_VIZ,
