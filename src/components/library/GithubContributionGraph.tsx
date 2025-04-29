@@ -46,7 +46,7 @@ const getTileColor = (level: number, theme: Theme): string => {
 
 const GithubContributionGraph: React.FC<GithubContributionGraphProps> = ({
   username = "torvalds",
-  apiBaseUrl = "https://github-contributions-api.jogruber.de/v4",
+  apiBaseUrl = "https://github-contributions-api.jogruber.de",
   rows = 7,
   columns = 52,
   tileStyles,
@@ -59,7 +59,7 @@ const GithubContributionGraph: React.FC<GithubContributionGraphProps> = ({
   useEffect(() => {
     const fetchContributions = async () => {
       try {
-        const response = await fetch(`${apiBaseUrl}/${username}?y=last`);
+        const response = await fetch(`${apiBaseUrl}/v4/${username}?y=last`);
         const data = await response.json();
         setContributions(data.contributions || []);
       } catch (error) {
