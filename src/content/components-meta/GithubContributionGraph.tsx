@@ -52,18 +52,18 @@ npm run start`,
 const overview = {
   miniPreview: ({ className }: { className: string }) => (
     <MiniPreviewWrapper className={`${className}`}>
-      <GithubContributionGraph username="maximelbv" columns={30} />
+      <GithubContributionGraph username="torvalds" columns={30} />
     </MiniPreviewWrapper>
   ),
   preview: () => (
     <PreviewWrapper>
-      <GithubContributionGraph username="maximelbv" />
+      <GithubContributionGraph username="torvalds" />
     </PreviewWrapper>
   ),
   code: `import GithubContributionGraph from "@/components/GithubContributionGraph";
 
 export default function GithubContributionGraphPreview() {
-  return <GithubContributionGraph username={"maximelbv"} />;
+  return <GithubContributionGraph username={"torvalds"} />;
 }`,
   quickCopyCode: manualInstallation.steps[1].codeBlock.tsTailwind,
 };
@@ -131,7 +131,7 @@ const ex = {
     <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
       <MiniPreviewWrapper>
         <GithubContributionGraph
-          username="maximelbv"
+          username="torvalds"
           columns={7}
           theme="purple"
           tileStyles={{ borderRadius: "0", width: "15px", height: "15px" }}
@@ -140,7 +140,7 @@ const ex = {
       </MiniPreviewWrapper>
       <MiniPreviewWrapper>
         <GithubContributionGraph
-          username="maximelbv"
+          username="torvalds"
           rows={4}
           columns={12}
           theme="red"
@@ -150,7 +150,7 @@ const ex = {
       </MiniPreviewWrapper>
       <MiniPreviewWrapper>
         <GithubContributionGraph
-          username="maximelbv"
+          username="torvalds"
           rows={1}
           columns={7}
           theme="orange"
@@ -160,7 +160,7 @@ const ex = {
       </MiniPreviewWrapper>
       <MiniPreviewWrapper>
         <GithubContributionGraph
-          username="maximelbv"
+          username="torvalds"
           rows={20}
           columns={20}
           theme="blue"
@@ -174,7 +174,7 @@ const ex = {
     <div className="grid gap-4 grid-cols">
       <MiniPreviewWrapper>
         <GithubContributionGraph
-          username="maximelbv"
+          username="torvalds"
           columns={7}
           theme="purple"
           tileStyles={{ borderRadius: "0", width: "15px", height: "15px" }}
@@ -183,7 +183,7 @@ const ex = {
       </MiniPreviewWrapper>
       <MiniPreviewWrapper>
         <GithubContributionGraph
-          username="maximelbv"
+          username="torvalds"
           rows={4}
           columns={12}
           theme="red"
